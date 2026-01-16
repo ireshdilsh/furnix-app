@@ -1,7 +1,17 @@
 import { View, Text, Image, StyleSheet } from 'react-native'
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useRouter } from 'expo-router';
 
 export default function Mainscreen() {
+
+    const router = useRouter()
+
+    useEffect(() => {
+        setTimeout(() => {
+            router.replace('/screens/secondscreen');
+        }, 3000);
+    });
+
   return (
     <View style={styles.container}>
         <Image style={styles.image} source={require('../../assets/images/logo.png')} />
