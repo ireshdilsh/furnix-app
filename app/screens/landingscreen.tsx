@@ -10,7 +10,7 @@ export default function Landingscreen() {
         setTimeout(() => {
             router.replace('/screens/mainscreen')
         }, 3000);
-    }, []);
+    });
 
     return (
         <View style={styles.container}>

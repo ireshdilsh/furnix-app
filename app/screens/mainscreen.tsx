@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
 
     button: {
         backgroundColor: '#4a5565',
-        paddingVertical: 15,
+        paddingVertical: 17,
         marginTop: 30,
         flex: 1,
         justifyContent: 'center',
