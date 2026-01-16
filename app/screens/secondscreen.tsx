@@ -1,13 +1,13 @@
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
+import { View, Text, StyleSheet, Pressable } from 'react-native'
 import React from 'react'
 
 export default function Secondscreen() {
     return (
         <View style={styles.container}>
             <Text style={styles.description}>Find your perfect home pieces and order with just a few taps.</Text>
-            <TouchableOpacity style={styles.button}>
+            <Pressable style={styles.button}>
                 <Text style={styles.buttonText}>Get Started</Text>
-            </TouchableOpacity>
+            </Pressable>
         </View>
     )
 }
