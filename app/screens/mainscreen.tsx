@@ -10,7 +10,7 @@ export default function Mainscreen() {
                 Find your perfect home pieces and order with just a few taps.
             </Text>
             <Pressable style={styles.button}>
-                <Text style={styles.buttong_text}>Get Start</Text>
+                <Text style={styles.buttong_text}>Get Started</Text>
             </Pressable>
         </View>
     )
