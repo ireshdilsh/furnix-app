@@ -1,4 +1,4 @@
-import { View, Text, Image, StyleSheet } from 'react-native'
+import { View, Text, Image, StyleSheet, Pressable } from 'react-native'
 import React from 'react'
 
 export default function Mainscreen() {
@@ -7,7 +7,11 @@ export default function Mainscreen() {
             <Image style={styles.image} source={require('../../assets/images/hero-img.png')} />
             <Text style={styles.title}>Modern Furniture for Modern Homes</Text>
             <Text style={styles.description}>
-                Find your perfect home pieces and order with just a few taps.</Text>
+                Find your perfect home pieces and order with just a few taps.
+            </Text>
+            <Pressable style={styles.button}>
+                <Text style={styles.buttong_text}>Get Start</Text>
+            </Pressable>
         </View>
     )
 }
@@ -31,6 +35,26 @@ const styles = StyleSheet.create({
         marginRight: 25,
         marginLeft: 25,
         marginTop: 10,
+        fontSize: 16
+    },
+
+    button: {
+        backgroundColor: '#4a5565',
+        paddingVertical: 15,
+        marginTop: 30,
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '85%',
+        marginRight: 25,
+        marginLeft: 25,
+        borderRadius:5
+    },
+
+    buttong_text: {
+        color: '#fff',
+        textAlign: 'center',
+        fontWeight: 600,
         fontSize: 16
     }
 })  
