@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
         width: '85%',
         marginRight: 25,
         marginLeft: 25,
-        borderRadius:5
+        borderRadius: 5
     },
 
     buttong_text: {
