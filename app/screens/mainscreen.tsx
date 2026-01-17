@@ -31,6 +31,10 @@ export default function Mainscreen() {
         setIsBottomSheetVisible(true)
     }
 
+    const gotoUserDashboard = () => {
+        router.replace('/screens/userdashboard')
+    }
+
     return (
         <View>
             <Image style={styles.image} source={require('../../assets/images/hero-img.png')} />
@@ -73,7 +77,7 @@ export default function Mainscreen() {
                                 secureTextEntry
                             />
                             
-                            <Pressable style={styles.signInButton}>
+                            <Pressable style={styles.signInButton} onPress={gotoUserDashboard}>
                                 <Text style={styles.signInButtonText}>Authenticate me</Text>
                             </Pressable>
                             
