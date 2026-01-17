@@ -1,11 +1,13 @@
 import { useRouter } from 'expo-router'
 import React, { useState } from 'react'
-import { Image, Modal, Pressable, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import { Image, Modal, Pressable, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 
 export default function Mainscreen() {
 
     const router = useRouter()
+
     const [isBottomSheetVisible, setIsBottomSheetVisible] = useState(false)
+    const [isSignUpSheetVisible, setIsSignUpSheetVisible] = useState(false)
 
     const openSignInBottomSheet = () => {
         setIsBottomSheetVisible(true)
@@ -13,6 +15,20 @@ export default function Mainscreen() {
 
     const closeBottomSheet = () => {
         setIsBottomSheetVisible(false)
+    }
+
+    const openSignUpBottomSheet = () => {
+        setIsBottomSheetVisible(false)
+        setIsSignUpSheetVisible(true)
+    }
+
+    const closeSignUpSheet = () => {
+        setIsSignUpSheetVisible(false)
+    }
+
+    const switchToSignIn = () => {
+        setIsSignUpSheetVisible(false)
+        setIsBottomSheetVisible(true)
     }
 
     return (
@@ -76,8 +92,85 @@ export default function Mainscreen() {
                             </Pressable>
                             
                             <Text style={styles.signUpText}>
-                                Dont have an account? <Text style={styles.signUpLink}>Sign Up</Text>
+                                Dont have an account? <Text style={styles.signUpLink} onPress={openSignUpBottomSheet}>Sign Up</Text>
                             </Text>
+                        </View>
+                    </TouchableOpacity>
+                </TouchableOpacity>
+            </Modal>
+
+            <Modal
+                animationType="slide"
+                transparent={true}
+                visible={isSignUpSheetVisible}
+                onRequestClose={closeSignUpSheet}
+            >
+                <TouchableOpacity 
+                    style={styles.modalOverlay} 
+                    activeOpacity={1} 
+                    onPress={closeSignUpSheet}
+                >
+                    <TouchableOpacity activeOpacity={1} onPress={(e) => e.stopPropagation()}>
+                        <View style={styles.bottomSheet}>
+                            <View style={styles.handleBar} />
+                            <ScrollView 
+                                showsVerticalScrollIndicator={false}
+                                keyboardShouldPersistTaps="handled"
+                            >
+                                <Text style={styles.sheetTitle}>Create Account</Text>
+                                <Text style={styles.sheetDescription}>Join Furnix and start shopping furniture easily.</Text>
+                                
+                                <TextInput
+                                    style={styles.input}
+                                    placeholder="Full Name"
+                                    placeholderTextColor="#9CA3AF"
+                                    autoCapitalize="words"
+                                />
+                                
+                                <TextInput
+                                    style={styles.input}
+                                    placeholder="Email"
+                                    placeholderTextColor="#9CA3AF"
+                                    keyboardType="email-address"
+                                    autoCapitalize="none"
+                                />
+                                
+                                <TextInput
+                                    style={styles.input}
+                                    placeholder="Password"
+                                    placeholderTextColor="#9CA3AF"
+                                    secureTextEntry
+                                />
+                                
+                                <TextInput
+                                    style={styles.input}
+                                    placeholder="Confirm Password"
+                                    placeholderTextColor="#9CA3AF"
+                                    secureTextEntry
+                                />
+                                
+                                <Pressable style={styles.signInButton}>
+                                    <Text style={styles.signInButtonText}>Create Account</Text>
+                                </Pressable>
+                                
+                                <View style={styles.dividerContainer}>
+                                    <View style={styles.divider} />
+                                    <Text style={styles.dividerText}>OR</Text>
+                                    <View style={styles.divider} />
+                                </View>
+                                
+                                <Pressable style={styles.googleButton}>
+                                    <Image 
+                                        source={{ uri: 'https://img.icons8.com/?size=100&id=17949&format=png&color=000000' }} 
+                                        style={styles.googleIcon}
+                                    />
+                                    <Text style={styles.googleButtonText}>Continue with Google</Text>
+                                </Pressable>
+                                
+                                <Text style={styles.signUpText}>
+                                    Already have an account? <Text style={styles.signUpLink} onPress={switchToSignIn}>Sign In</Text>
+                                </Text>
+                            </ScrollView>
                         </View>
                     </TouchableOpacity>
                 </TouchableOpacity>
