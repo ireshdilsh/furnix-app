@@ -1,10 +1,13 @@
 import { View, Text, Image, StyleSheet, Pressable } from 'react-native'
 import React from 'react'
+import { useRouter } from 'expo-router'
 
 export default function Mainscreen() {
 
+    const router = useRouter()
+
     const openSignInBottomSheet = () => {
-        
+        router.push('./signinbottomsheet')
     }
 
     return (
@@ -14,7 +17,7 @@ export default function Mainscreen() {
             <Text style={styles.description}>
                 Find your perfect home pieces and order with just a few taps.
             </Text>
-            <Pressable style={styles.button}>
+            <Pressable onPress={openSignInBottomSheet} style={styles.button}>
                 <Text style={styles.buttong_text}>Get Started</Text>
             </Pressable>
         </View>
