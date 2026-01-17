@@ -2,6 +2,11 @@ import { View, Text, Image, StyleSheet, Pressable } from 'react-native'
 import React from 'react'
 
 export default function Mainscreen() {
+
+    const openSignInBottomSheet = () => {
+        
+    }
+
     return (
         <View>
             <Image style={styles.image} source={require('../../assets/images/hero-img.png')} />
