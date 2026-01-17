@@ -1,13 +1,13 @@
-import { View, Text, Image, StyleSheet, Pressable } from 'react-native'
-import React from 'react'
 import { useRouter } from 'expo-router'
+import React from 'react'
+import { Image, Pressable, StyleSheet, Text, View } from 'react-native'
 
 export default function Mainscreen() {
 
     const router = useRouter()
 
     const openSignInBottomSheet = () => {
-        router.push('./signinbottomsheet')
+        console.log('press button');
     }
 
     return (
@@ -18,7 +18,7 @@ export default function Mainscreen() {
                 Find your perfect home pieces and order with just a few taps.
             </Text>
             <Pressable onPress={openSignInBottomSheet} style={styles.button}>
-                <Text style={styles.buttong_text}>Get Started</Text>
+                <Text style={styles.buttong_text}>Get Start</Text>
             </Pressable>
         </View>
     )
@@ -27,7 +27,7 @@ export default function Mainscreen() {
 const styles = StyleSheet.create({
 
     image: {
-        marginTop: -16.7
+        marginTop: -16.7,
     },
 
     title: {
@@ -48,21 +48,19 @@ const styles = StyleSheet.create({
 
     button: {
         backgroundColor: '#4a5565',
-        paddingVertical: 17,
+        paddingVertical: 13,
         marginTop: 30,
-        flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        width: '85%',
-        marginRight: 25,
-        marginLeft: 25,
+        width: '86%',
+        marginHorizontal: 25,
         borderRadius: 5
     },
 
     buttong_text: {
-        color: '#fff',
+        color: '#ffffff',
         textAlign: 'center',
-        fontWeight: 600,
-        fontSize: 16
+        fontSize: 17,
+        fontWeight: '500'
     }
 })  

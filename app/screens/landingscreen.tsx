@@ -1,6 +1,6 @@
-import { View, Text, Image, StyleSheet } from 'react-native'
-import React, { useEffect } from 'react'
 import { useRouter } from 'expo-router';
+import React, { useEffect } from 'react';
+import { Image, StyleSheet, View } from 'react-native';
 
 export default function Landingscreen() {
 
@@ -10,7 +10,7 @@ export default function Landingscreen() {
         setTimeout(() => {
             router.replace('/screens/mainscreen')
         }, 3000);
-    });
+    }, []);
 
     return (
         <View style={styles.container}>
