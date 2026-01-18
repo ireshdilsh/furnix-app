@@ -52,9 +52,9 @@ export default function Mainscreen() {
                 visible={isBottomSheetVisible}
                 onRequestClose={closeBottomSheet}
             >
-                <TouchableOpacity 
-                    style={styles.modalOverlay} 
-                    activeOpacity={1} 
+                <TouchableOpacity
+                    style={styles.modalOverlay}
+                    activeOpacity={1}
                     onPress={closeBottomSheet}
                 >
                     <TouchableOpacity activeOpacity={1} onPress={(e) => e.stopPropagation()}>
@@ -69,32 +69,32 @@ export default function Mainscreen() {
                                 keyboardType="email-address"
                                 autoCapitalize="none"
                             />
-                            
+
                             <TextInput
                                 style={styles.input}
                                 placeholder="Password"
                                 placeholderTextColor="#9CA3AF"
                                 secureTextEntry
                             />
-                            
+
                             <Pressable style={styles.signInButton} onPress={gotoUserDashboard}>
                                 <Text style={styles.signInButtonText}>Authenticate me</Text>
                             </Pressable>
-                            
+
                             <View style={styles.dividerContainer}>
                                 <View style={styles.divider} />
                                 <Text style={styles.dividerText}>OR</Text>
                                 <View style={styles.divider} />
                             </View>
-                            
+
                             <Pressable style={styles.googleButton}>
-                                <Image 
-                                    source={{ uri: 'https://img.icons8.com/?size=100&id=17949&format=png&color=000000' }} 
+                                <Image
+                                    source={{ uri: 'https://img.icons8.com/?size=100&id=17949&format=png&color=000000' }}
                                     style={styles.googleIcon}
                                 />
                                 <Text style={styles.googleButtonText}>Continue with Google</Text>
                             </Pressable>
-                            
+
                             <Text style={styles.signUpText}>
                                 Dont have an account? <Text style={styles.signUpLink} onPress={openSignUpBottomSheet}>Sign Up</Text>
                             </Text>
@@ -109,28 +109,28 @@ export default function Mainscreen() {
                 visible={isSignUpSheetVisible}
                 onRequestClose={closeSignUpSheet}
             >
-                <TouchableOpacity 
-                    style={styles.modalOverlay} 
-                    activeOpacity={1} 
+                <TouchableOpacity
+                    style={styles.modalOverlay}
+                    activeOpacity={1}
                     onPress={closeSignUpSheet}
                 >
                     <TouchableOpacity activeOpacity={1} onPress={(e) => e.stopPropagation()}>
                         <View style={styles.bottomSheet}>
                             <View style={styles.handleBar} />
-                            <ScrollView 
+                            <ScrollView
                                 showsVerticalScrollIndicator={false}
                                 keyboardShouldPersistTaps="handled"
                             >
                                 <Text style={styles.sheetTitle}>Create Account</Text>
                                 <Text style={styles.sheetDescription}>Join Furnix and start shopping furniture easily.</Text>
-                                
+
                                 <TextInput
                                     style={styles.input}
                                     placeholder="Full Name"
                                     placeholderTextColor="#9CA3AF"
                                     autoCapitalize="words"
                                 />
-                                
+
                                 <TextInput
                                     style={styles.input}
                                     placeholder="Email"
@@ -138,39 +138,39 @@ export default function Mainscreen() {
                                     keyboardType="email-address"
                                     autoCapitalize="none"
                                 />
-                                
+
                                 <TextInput
                                     style={styles.input}
                                     placeholder="Password"
                                     placeholderTextColor="#9CA3AF"
                                     secureTextEntry
                                 />
-                                
+
                                 <TextInput
                                     style={styles.input}
                                     placeholder="Confirm Password"
                                     placeholderTextColor="#9CA3AF"
                                     secureTextEntry
                                 />
-                                
+
                                 <Pressable style={styles.signInButton}>
                                     <Text style={styles.signInButtonText}>Create Account</Text>
                                 </Pressable>
-                                
+
                                 <View style={styles.dividerContainer}>
                                     <View style={styles.divider} />
                                     <Text style={styles.dividerText}>OR</Text>
                                     <View style={styles.divider} />
                                 </View>
-                                
+
                                 <Pressable style={styles.googleButton}>
-                                    <Image 
-                                        source={{ uri: 'https://img.icons8.com/?size=100&id=17949&format=png&color=000000' }} 
+                                    <Image
+                                        source={{ uri: 'https://img.icons8.com/?size=100&id=17949&format=png&color=000000' }}
                                         style={styles.googleIcon}
                                     />
                                     <Text style={styles.googleButtonText}>Continue with Google</Text>
                                 </Pressable>
-                                
+
                                 <Text style={styles.signUpText}>
                                     Already have an account? <Text style={styles.signUpLink} onPress={switchToSignIn}>Sign In</Text>
                                 </Text>
@@ -252,9 +252,9 @@ const styles = StyleSheet.create({
         color: '#4a5565',
     },
 
-    sheetDescription:{
-        color:'#718096',
-        marginBottom:40
+    sheetDescription: {
+        color: '#718096',
+        marginBottom: 40
     },
 
     input: {
