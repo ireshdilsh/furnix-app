@@ -26,6 +26,14 @@
       "favicon": "./assets/images/favicon.png"
     },
     "plugins": [
+      [
+        "expo-font",
+        {
+          "fonts": [
+            "node_modules/@expo-google-fonts/nunito-sans/500Medium/NunitoSans_500Medium.ttf"
+          ]
+        }
+      ],
       "expo-router",
       [
         "expo-splash-screen",
