@@ -9,7 +9,7 @@ export default function index() {
         fontFamily: 'Roboto_500Medium',
         fontSize: 36,
       }}>
-        Everyone
+        Everyone freedom th
       </Text>
     </View>
   );
