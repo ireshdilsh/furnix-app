@@ -1,15 +1,18 @@
-import { View, Text, StyleSheet, Platform } from 'react-native'
-import React from 'react'
+import React from 'react';
+import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
 
 export default function index() {
+
   return (
     <View style={styles.container}>
       <Text style={{
-        fontFamily:Platform.OS === 'android' ? 'NunitoSans_500Medium_Italic' : 'NunitoSans_500Medium_Italic',
-        fontSize:36,
-      }}>Everyone</Text>
+        fontFamily: 'Roboto_500Medium',
+        fontSize: 36,
+      }}>
+        Everyone
+      </Text>
     </View>
-  )
+  );
 }
 
 const styles = StyleSheet.create({

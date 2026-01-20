@@ -30,7 +30,7 @@
         "expo-font",
         {
           "fonts": [
-            "node_modules/@expo-google-fonts/nunito-sans/500Medium_Italic/NunitoSans_500Medium_Italic.ttf"
+            "node_modules/@expo-google-fonts/roboto/500Medium/Roboto_500Medium.ttf"
           ]
         }
       ],
