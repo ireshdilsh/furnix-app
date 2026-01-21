@@ -11,6 +11,13 @@ export default function index() {
       }}>
         Everyone freedom th
       </Text>
+
+      <Text style={{
+        fontFamily:'NunitoSans_500Medium',
+        fontSize: 36,
+      }}>
+        This is Nunito Sans font
+      </Text>
     </View>
   );
 }
