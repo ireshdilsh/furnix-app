@@ -7,16 +7,9 @@ export default function index() {
     <View style={styles.container}>
       <Text style={{
         fontFamily: 'Roboto_500Medium',
-        fontSize: 36,
+        fontSize: 20
       }}>
         Everyone freedom th
-      </Text>
-
-      <Text style={{
-        fontFamily:'NunitoSans_500Medium',
-        fontSize: 36,
-      }}>
-        This is Nunito Sans font
       </Text>
     </View>
   );
