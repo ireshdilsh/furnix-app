@@ -10,19 +10,19 @@ export default function Mainscreenone() {
     useEffect(() => {
         setTimeout(() => {
             router.replace('/screens/mainscreentwo')
-        }, 3000);       
+        }, 3500);       
     });
 
   return (
     <View>
-      <Image style={styles.mainImage} source={require('../../assets/images/Furnix.png')} />
+      <Image style={styles.mainImage} source={require('../../assets/images/Furnix-removebg-preview.png')} />
     </View>
   )
 }
 
 const styles = StyleSheet.create({
     mainImage:{
-        width: 180,
-        height: 80,
+        width: 150,
+        height: 50,
     }
 })
