@@ -9,7 +9,7 @@ export default function Header() {
 
     return (
         <View style={styles.container}>
-            <View style={{flexDirection:'row', gap:8}}>
+            <View style={styles.dateTime}>
                 <Text style={styles.dateText}>{new Date().toString().substring(0, 10)}</Text>
                 <Text style={styles.timeText}>{new Date().toLocaleTimeString().substring(0, 4)}</Text>
             </View>
@@ -60,5 +60,11 @@ const styles = StyleSheet.create({
         color: '#4a5565',
         fontFamily: 'Roboto_400Regular',
         fontSize: 13
+    },
+
+    dateTime: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: 10
     }
 })
