@@ -11,7 +11,7 @@ export default function Mainscreenone() {
       <View style={styles.circle} />
       <View style={styles.circle_1} />
       <View style={styles.circle_2} />
-      <Image style={styles.img} source={require('../../assets/images/istockphoto-505973586-612x612-removebg-preview.png')} />
+      <Image style={styles.img} source={require('../../assets/images/hero.png')} />
       <Pressable style={styles.button}>
         <Text style={styles.buttonText}>Get Started</Text>
         <Image
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     right: -110,
     top: 270,
-    borderColor: '#ccd8eb',
+    borderColor: '#dfe2e7',
     borderWidth: 1
   },
 
@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     right: -50,
     top: -50,
-    borderColor: '#ccd8eb',
+    borderColor: '#dfe2e7',
     borderWidth: 1
   },
 
