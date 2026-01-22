@@ -7,6 +7,7 @@ export default function Mainscreenone() {
       <Text style={styles.title}>Find Your{'\n'}Perfect Furniture.</Text>
       <Text style={styles.desc}>From comfort to style, find furniture{'\n'}that feels just right.</Text>
       <View style={styles.circle}/>
+       <View style={styles.circle_1}/>
       <Image style={styles.img} source={require('../../assets/images/istockphoto-505973586-612x612-removebg-preview.png')}/>
       <Pressable style={styles.button}>
         <Text style={styles.buttonText}>Get Started</Text>
@@ -31,6 +32,17 @@ const styles = StyleSheet.create({
     right:-150,
     top:240,
     backgroundColor:'#f1f2f4',
+  },
+
+  circle_1:{
+    height:150,
+    width:150,
+    borderRadius:75,
+    position:'absolute',
+    left:-100,
+    top:500,
+    borderColor:'#f1f2f4',
+    borderWidth:2.5
   },
 
   img:{
