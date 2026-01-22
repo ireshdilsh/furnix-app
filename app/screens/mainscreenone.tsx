@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
     left:30,
     top:205,
     fontFamily:'Roboto_500Medium',
-    fontSize:16,
+    fontSize:15,
     color:'#718096',
     fontWeight:'600',
     zIndex:1

@@ -26,10 +26,10 @@ export default function Header() {
     return (
         <View style={styles.container}>
             <View style={styles.dateTime}>
-                <Text style={styles.dateText}>{new Date().toString().substring(0, 10)}</Text>
-                <Text style={styles.timeText}>{new Date().toLocaleTimeString().substring(0, 5)}</Text>
+                <Text style={styles.dateText}>{new Date().toString().substring(0, 15)}</Text>
             </View>
             <View style={styles.battery}>
+                <Text style={styles.timeText}>{new Date().toLocaleTimeString().substring(0, 5)}</Text>
                 <View style={styles.network}>
                     <Image style={styles.networkIcon} source={{ uri: netWorkIcon }} />
                 </View>
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     },
 
     network: {
-        marginRight:3
+        marginRight: 3
     },
 
     networkIcon: {
@@ -88,7 +88,8 @@ const styles = StyleSheet.create({
     timeText: {
         color: '#4a5565',
         fontFamily: 'Roboto_400Regular',
-        fontSize: 13
+        fontSize: 13,
+        zIndex: 1
     },
 
     dateTime: {
