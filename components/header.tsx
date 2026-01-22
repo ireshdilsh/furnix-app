@@ -47,12 +47,15 @@ export default function Header() {
 const styles = StyleSheet.create({
     container: {
         position: 'absolute',
-        top: 26,
+        top: 5,
         left: 30,
         flexDirection: 'row',
         justifyContent: 'space-between',
         gap: 4,
         width: '88%',
+        backgroundColor:'#fff',
+        paddingTop:22,
+        zIndex: 1
     },
 
     network: {
