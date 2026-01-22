@@ -1,5 +1,5 @@
-import { View, Text, StyleSheet, Image, Pressable } from 'react-native'
 import React from 'react'
+import { Image, Pressable, StyleSheet, Text, View } from 'react-native'
 
 export default function Mainscreenone() {
   return (
@@ -8,9 +8,14 @@ export default function Mainscreenone() {
       <Text style={styles.desc}>From comfort to style, find furniture{'\n'}that feels just right.</Text>
       <View style={styles.circle}/>
        <View style={styles.circle_1}/>
+       <View style={styles.circle_2}/>
       <Image style={styles.img} source={require('../../assets/images/istockphoto-505973586-612x612-removebg-preview.png')}/>
       <Pressable style={styles.button}>
         <Text style={styles.buttonText}>Get Started</Text>
+        <Image 
+          style={{width: 22, height: 22, tintColor: '#FFFFFF'}}
+          source={{uri: 'https://img.icons8.com/?size=100&id=15823&format=png&color=FFFFFF'}}
+        />
       </Pressable>
     </View>
   )
@@ -45,6 +50,17 @@ const styles = StyleSheet.create({
     borderWidth:2.5
   },
 
+    circle_2:{
+    height:150,
+    width:150,
+    borderRadius:75,
+    position:'absolute',
+    right:-50,
+    top:-50,
+    borderColor:'#f1f2f4',
+    borderWidth:2.5
+  },
+
   img:{
     transform:[{scale:1.2}],
     marginLeft:100,
@@ -64,7 +80,7 @@ const styles = StyleSheet.create({
   desc:{
     position:'absolute',
     left:30,
-    top:200,
+    top:205,
     fontFamily:'Roboto_500Medium',
     fontSize:16,
     color:'#718096',
@@ -80,6 +96,11 @@ const styles = StyleSheet.create({
     paddingVertical:14,
     borderRadius:5,
     width:350,
+    flex:1,
+    flexDirection:'row',
+    justifyContent:'center',
+    alignItems:'center',
+    gap:15
   },
 
   buttonText:{
