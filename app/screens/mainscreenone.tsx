@@ -1,9 +1,11 @@
+import Header from '@/components/header'
 import React from 'react'
 import { Image, Pressable, StyleSheet, Text, View } from 'react-native'
 
 export default function Mainscreenone() {
   return (
     <View style={styles.container}>
+      <Header/>
       <Text style={styles.title}>Find Your{'\n'}Perfect Furniture.</Text>
       <Text style={styles.desc}>From comfort to style, find furniture{'\n'}that feels just right.</Text>
       <View style={styles.circle}/>
