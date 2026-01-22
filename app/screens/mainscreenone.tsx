@@ -6,7 +6,7 @@ export default function Mainscreenone() {
     <View>
       <View style={styles.circle_1}/>
       <Text style={styles.title}>Find Your {'\n'}Perfect Furniture</Text>
-      <Image style={styles.img} source={require('../../assets/images/istockphoto-505973586-612x612.jpg')}/>
+      <Image style={styles.img} source={require('../../assets/images/istockphoto-505973586-612x612-removebg-preview.png')}/>
     </View>
   )
 }
@@ -26,8 +26,8 @@ const styles = StyleSheet.create({
 
   img:{
     marginTop:150,
-    height:'75%',
-    width:330,
+    height:'85%',
+    width:350,
     marginLeft:80
   },
 
