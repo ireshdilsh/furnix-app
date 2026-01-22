@@ -1,12 +1,12 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import Mainscreenone from './screens/mainscreenone';
+import { StyleSheet, View } from 'react-native';
+import Landing from './screens/landing';
 
 export default function index() {
 
   return (
     <View style={styles.container}>
-      <Mainscreenone/>
+      <Landing/>
     </View>
   );
 }
