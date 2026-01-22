@@ -23,6 +23,10 @@ export default function Header() {
         netWorkIcon = 'https://img.icons8.com/?size=100&id=P3_jnk6ErQF5&format=png&color=000000'
     }
 
+    if (networkState?.type === 'NONE' || networkState?.type === 'UNKNOWN') {
+        netWorkIcon = 'https://img.icons8.com/?size=100&id=spJjYko6aNc2&format=png&color=000000'
+    }
+
     return (
         <View style={styles.container}>
             <View style={styles.dateTime}>
@@ -89,7 +93,8 @@ const styles = StyleSheet.create({
         color: '#4a5565',
         fontFamily: 'Roboto_400Regular',
         fontSize: 13,
-        zIndex: 1
+        zIndex: 1,
+        marginRight: 5
     },
 
     dateTime: {
