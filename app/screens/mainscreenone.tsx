@@ -1,8 +1,10 @@
 import Header from '@/components/header'
-import React from 'react'
-import { Image, Pressable, StyleSheet, Text, View } from 'react-native'
+import React, { useState } from 'react'
+import { Image, Modal, Pressable, StyleSheet, Text, TouchableOpacity, View, TextInput } from 'react-native'
 
 export default function Mainscreenone() {
+  const [isBottomSheetVisible, setIsBottomSheetVisible] = useState(false)
+
   return (
     <View style={styles.container}>
       <Header />
@@ -12,13 +14,42 @@ export default function Mainscreenone() {
       <View style={styles.circle_1} />
       <View style={styles.circle_2} />
       <Image style={styles.img} source={require('../../assets/images/hero.png')} />
-      <Pressable style={styles.button}>
+      <Pressable
+        style={styles.button}
+        onPress={() => setIsBottomSheetVisible(true)}
+      >
         <Text style={styles.buttonText}>Get Started</Text>
         <Image
           style={{ width: 22, height: 22, tintColor: '#FFFFFF' }}
           source={{ uri: 'https://img.icons8.com/?size=100&id=15823&format=png&color=FFFFFF' }}
         />
       </Pressable>
+
+      {/* Bottom Sheet Modal */}
+      <Modal
+        visible={isBottomSheetVisible}
+        transparent={true}
+        animationType="slide"
+        onRequestClose={() => setIsBottomSheetVisible(false)}
+      >
+        <TouchableOpacity
+          style={styles.modalOverlay}
+          activeOpacity={1}
+          onPress={() => setIsBottomSheetVisible(false)}
+        >
+        </TouchableOpacity>
+        <View
+          style={styles.bottomSheet}>
+          <View style={styles.bottomSheetHandle} />
+          <Text style={styles.bottomSheetTitle}>Welcome to Furnix!</Text>
+          <Text style={styles.bottomSheetText}>
+            Discover amazing furniture collections and find the perfect pieces for your home.
+          </Text>
+
+          {/* register form */}
+          <TextInput placeholder='Name' />
+        </View>
+      </Modal>
     </View>
   )
 }
@@ -90,6 +121,8 @@ const styles = StyleSheet.create({
     zIndex: 1
   },
 
+  // bottomsheet styles
+
   button: {
     position: 'absolute',
     left: 30,
@@ -110,6 +143,61 @@ const styles = StyleSheet.create({
     fontSize: 16.5,
     fontWeight: '600',
     textAlign: 'center',
+    fontFamily: 'Roboto_500Medium',
+  },
+
+  modalOverlay: {
+    flex: 1,
+    backgroundColor: 'rgba(255, 255, 255, 0.15)',
+    justifyContent: 'flex-end',
+  },
+
+  bottomSheet: {
+    backgroundColor: '#FFFFFF',
+    borderTopLeftRadius: 25,
+    borderTopRightRadius: 25,
+    paddingHorizontal: 30,
+    paddingVertical: 25,
+    paddingBottom: 40,
+    minHeight: 300,
+  },
+
+  bottomSheetHandle: {
+    width: 40,
+    height: 5,
+    backgroundColor: '#E5E7EB',
+    borderRadius: 3,
+    alignSelf: 'center',
+    marginBottom: 20,
+  },
+
+  bottomSheetTitle: {
+    fontSize: 24,
+    fontWeight: '700',
+    color: '#4a5565',
+    fontFamily: 'Roboto_500Medium',
+    marginBottom: 15,
+  },
+
+  bottomSheetText: {
+    fontSize: 16,
+    color: '#718096',
+    fontFamily: 'Roboto_500Medium',
+    lineHeight: 24,
+    marginBottom: 30,
+  },
+
+  bottomSheetButton: {
+    backgroundColor: '#4a5565',
+    paddingVertical: 16,
+    borderRadius: 8,
+    alignItems: 'center',
+  },
+
+  bottomSheetButtonText: {
+    color: '#FFFFFF',
+    fontSize: 16,
+    fontWeight: '600',
     fontFamily: 'Roboto_500Medium',
   }
 })
