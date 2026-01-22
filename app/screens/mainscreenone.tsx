@@ -3,9 +3,10 @@ import React from 'react'
 
 export default function Mainscreenone() {
   return (
-    <View>
-      <View style={styles.circle_1}/>
-      <Text style={styles.title}>Find Your {'\n'}Perfect Furniture</Text>
+    <View style={styles.container}>
+      <Text style={styles.title}>Find Your{'\n'}Perfect Furniture.</Text>
+      <Text style={styles.desc}>From comfort to style, find furniture that{'\n'}feels just right.</Text>
+      <View style={styles.circle}/>
       <Image style={styles.img} source={require('../../assets/images/istockphoto-505973586-612x612-removebg-preview.png')}/>
     </View>
   )
@@ -13,32 +14,46 @@ export default function Mainscreenone() {
 
 const styles = StyleSheet.create({
 
-  circle_1:{
-    borderRadius:250,
-    height:150,
-    width:150,
-    borderColor:'#E5E7EB',
-    borderWidth:1.2,
+  container:{
+    height:'100%',
+    width:'100%',
+    backgroundColor:'#FFFFFF'
+  },
+
+  circle:{
+    height:400,
+    width:400,
+    borderRadius:'100%',
     position:'absolute',
-    left:-50,
-    top:50
+    right:-150,
+    top:240,
+    backgroundColor:'#f1f2f4',
   },
 
   img:{
-    marginTop:150,
-    height:'85%',
-    width:350,
-    marginLeft:80
+    transform:[{scale:1.2}],
+    marginLeft:100,
+    marginTop:380
   },
 
   title:{
     position:'absolute',
     left:30,
-    top:100,
+    top:210,
     fontFamily:'Roboto_500Medium',
-    fontSize:30,
+    fontSize:28,
+    color:'#4a5565',
+    fontWeight:'600'
+  },
+
+  desc:{
+    position:'absolute',
+    left:30,
+    top:290,
+    fontFamily:'Roboto_500Medium',
+    fontSize:16,
+    color:'#718096',
+    fontWeight:'500',
     zIndex:1
   }
-
-
 })
