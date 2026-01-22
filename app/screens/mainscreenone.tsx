@@ -6,13 +6,6 @@ export default function Mainscreenone() {
 
     const router = useRouter()
 
-    useEffect(() => {
-      
-      setTimeout(() => {
-          router.replace('/screens/maintwoscreen')
-      }, 3000);
-    }, []);
-
   return (
     <View style={styles.container}>
       <Image style={styles.mainImage} source={require('../../assets/images/Furnix-removebg-preview.png')} />
