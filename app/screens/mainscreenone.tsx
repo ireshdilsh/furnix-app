@@ -8,6 +8,7 @@ export default function Mainscreenone() {
   return (
     <View style={styles.container}>
       <Header />
+      <Image style={styles.logo} source={require('../../assets/images/logo.png')}/>
       <Text style={styles.title}>Find Your{'\n'}Perfect Furniture.</Text>
       <Text style={styles.desc}>From comfort to style, find furniture{'\n'}that feels just right.</Text>
       <View style={styles.circle} />
@@ -62,6 +63,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF'
   },
 
+  logo:{
+    position: 'absolute',
+    top: 70,
+    left: 125,
+    width: 140,
+    resizeMode: 'contain'
+  },
+
   circle: {
     height: 400,
     width: 400,
@@ -103,9 +112,9 @@ const styles = StyleSheet.create({
   title: {
     position: 'absolute',
     left: 30,
-    top: 120,
+    top: 195,
     fontFamily: 'Roboto_500Medium',
-    fontSize: 28,
+    fontSize: 22,
     color: '#4a5565',
     fontWeight: '700'
   },
@@ -113,11 +122,11 @@ const styles = StyleSheet.create({
   desc: {
     position: 'absolute',
     left: 30,
-    top: 205,
+    top: 260,
     fontFamily: 'Roboto_500Medium',
-    fontSize: 15,
+    fontSize: 14,
     color: '#718096',
-    fontWeight: '600',
+    fontWeight: '500',
     zIndex: 1
   },
 
