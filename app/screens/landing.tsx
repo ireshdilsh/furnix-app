@@ -17,7 +17,6 @@ export default function Landing() {
     <View style={styles.container}>
       <Header />
       <Image style={styles.logo} source={require('../../assets/images/logo.png')} />
-      <Text style={styles.desc}>Discover furniture designed to make your{'\n'}home feel complete.</Text>
       <View style={styles.footer}>
         <Text style={styles.poweredBy}>Powered by</Text>
         <Text style={styles.android}>Android</Text>
@@ -42,21 +41,13 @@ const styles = StyleSheet.create({
     width: 150,
     resizeMode: 'contain',
     position: 'absolute',
-    top: 350
+    top: 385
   },
 
-  desc:{
-    position: 'absolute',
-    top: 450,
-    textAlign: 'center',
-    color: '#718096',
-    fontWeight: '500',
-    fontFamily:'Roboto_500Medium',
-  },
 
   footer:{
     position: 'absolute',
-    top: 700,
+    top: 800,
     display:'flex',
     justifyContent: 'center',
     alignItems: 'center',
