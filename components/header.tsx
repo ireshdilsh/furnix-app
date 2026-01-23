@@ -3,7 +3,6 @@ import React from 'react'
 import { useBatteryLevel } from 'expo-battery';
 import { useNetworkState } from 'expo-network';
 
-
 export default function Header() {
 
     const batteryLevel = useBatteryLevel();
