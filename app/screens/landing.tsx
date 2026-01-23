@@ -7,11 +7,11 @@ export default function Landing() {
 
   const router = useRouter();
 
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     router.replace('/screens/mainscreenone')
-  //   }, 3000);
-  // });
+  useEffect(() => {
+    setTimeout(() => {
+      router.replace('/screens/mainscreenone')
+    }, 3000);
+  });
 
   return (
     <View style={styles.container}>
@@ -44,33 +44,32 @@ const styles = StyleSheet.create({
     top: 385
   },
 
-
-  footer:{
+  footer: {
     position: 'absolute',
     top: 800,
-    display:'flex',
+    display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    
+
   },
 
-  android:{
+  android: {
     fontWeight: '700',
-    fontFamily:'Roboto_700Bold',
-    fontSize:20,
-    color:'#4a5565'
+    fontFamily: 'Roboto_700Bold',
+    fontSize: 20,
+    color: '#4a5565'
   },
 
-  poweredBy:{
-    fontSize:13,
-    fontFamily:'Roboto_400Regular',
-    color:'#718096',
+  poweredBy: {
+    fontSize: 13,
+    fontFamily: 'Roboto_400Regular',
+    color: '#718096',
   },
 
-  androidIcon:{
-    width: 60, 
+  androidIcon: {
+    width: 60,
     height: 60,
-    marginTop:-5
+    marginTop: -5
   }
 
 })
