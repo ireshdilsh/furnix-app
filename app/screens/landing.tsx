@@ -7,35 +7,46 @@ export default function Landing() {
 
   const router = useRouter();
 
-  useEffect(() => {
-    setTimeout(() => {
-      router.replace('/screens/mainscreenone')
-    }, 3000);
-  });
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     router.replace('/screens/mainscreenone')
+  //   }, 3000);
+  // });
 
   return (
     <View style={styles.container}>
-      <Header/>
+      {/* <Header /> */}
       <Image style={styles.logo} source={require('../../assets/images/logo.png')} />
+      <Text style={styles.desc}>Discover furniture designed to make your{'\n'}home feel complete.</Text>
     </View>
   )
 }
 
 const styles = StyleSheet.create({
 
-  container:{
+  container: {
     flex: 1,
-    justifyContent:'center',
-    alignItems:'center',
+    justifyContent: 'center',
+    alignItems: 'center',
     backgroundColor: '#FFFFFF',
     width: '100%',
     height: '100%',
   },
 
-  logo:{
-    width: 180,
+  logo: {
+    width: 150,
     resizeMode: 'contain',
-    marginTop:870
+    position: 'absolute',
+    top: 350
   },
+
+  desc:{
+    position: 'absolute',
+    top: 450,
+    textAlign: 'center',
+    color: '#718096',
+    fontWeight: '500',
+    fontFamily:'Roboto_500Medium',
+  }
 
 })
