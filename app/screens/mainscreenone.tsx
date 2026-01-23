@@ -49,12 +49,13 @@ export default function Mainscreenone() {
 
           {/* register btns */}
           <TouchableOpacity style={styles.googleBtn}>
-            <Text style={styles.googleBtnText}>continue with google</Text>
+            <Text style={styles.googleBtnText}>Continue with Google</Text>
+            <Image style={styles.icons} source={{ uri: 'https://img.icons8.com/?size=100&id=17949&format=png&color=000000' }} />
           </TouchableOpacity>
 
           <TouchableOpacity style={styles.facebookBtn}>
-            <Text style={styles.facebookBtnText}>continue with facebook</Text>
-            <Image style={styles.icons} source={{uri : 'https://img.icons8.com/?size=100&id=118497&format=png&color=000000'}} />
+            <Text style={styles.facebookBtnText}>Continue with Facebook</Text>
+            <Image style={styles.icons} source={{ uri: 'https://img.icons8.com/?size=100&id=118497&format=png&color=000000' }} />
           </TouchableOpacity>
         </View>
       </Modal>
@@ -70,13 +71,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF'
   },
 
-  icons:{
-    height:32, 
-    width: 32
+  icons: {
+    height: 30,
+    width: 30
   },
 
   googleBtn: {
     flexDirection: 'row',
+    display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     borderColor: '#dfe2e7',
@@ -88,6 +90,7 @@ const styles = StyleSheet.create({
 
   facebookBtn: {
     flexDirection: 'row',
+    display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     borderColor: '#dfe2e7',
