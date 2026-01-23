@@ -8,7 +8,7 @@ export default function Mainscreenone() {
   return (
     <View style={styles.container}>
       <Header />
-      <Image style={styles.logo} source={require('../../assets/images/logo.png')}/>
+      <Image style={styles.logo} source={require('../../assets/images/logo.png')} />
       <Text style={styles.title}>Find Your{'\n'}Perfect Furniture.</Text>
       <Text style={styles.desc}>From comfort to style, find furniture{'\n'}that feels just right.</Text>
       <View style={styles.circle} />
@@ -42,13 +42,19 @@ export default function Mainscreenone() {
         <View
           style={styles.bottomSheet}>
           <View style={styles.bottomSheetHandle} />
-          <Text style={styles.bottomSheetTitle}>Welcome to Furnix!</Text>
+          <Text style={styles.bottomSheetTitle}>Join Us !</Text>
           <Text style={styles.bottomSheetText}>
             Discover amazing furniture collections and find the perfect pieces for your home.
           </Text>
 
-          {/* register form */}
-          <TextInput placeholder='Name' />
+          {/* register btns */}
+          <TouchableOpacity style={styles.googleBtn}>
+            <Text style={styles.googleBtnText}>continue with google</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.facebookBtn}>
+            <Text style={styles.facebookBtnText}>continue with facebook</Text>
+          </TouchableOpacity>
         </View>
       </Modal>
     </View>
@@ -63,7 +69,40 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF'
   },
 
-  logo:{
+  googleBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderColor: '#dfe2e7',
+    borderWidth: 1,
+    marginBottom: 15,
+    borderRadius: 5
+  },
+
+  facebookBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderColor: '#dfe2e7',
+    borderWidth: 1,
+    borderRadius: 5
+  },
+
+  googleBtnText: {
+    fontSize: 16,
+    color: '#4a5565',
+    fontFamily: 'Roboto_500Medium',
+    paddingVertical: 14,
+  },
+
+  facebookBtnText: {
+    fontSize: 16,
+    color: '#4a5565',
+    fontFamily: 'Roboto_500Medium',
+    paddingVertical: 14,
+  },
+
+  logo: {
     position: 'absolute',
     top: 70,
     left: 125,
