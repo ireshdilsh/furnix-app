@@ -3,19 +3,29 @@ import React from 'react'
 import Header from '@/components/header'
 
 export default function Userdashboard() {
-  return (
-    <View style={styles.container}>
-        
-    </View>
-  )
+    return (
+        <View style={styles.maincontainer}>
+            <Header />
+            <View style={styles.container}>
+                <Text>hsdfskdlf</Text>
+            </View>
+        </View>
+    )
 }
 
 const styles = StyleSheet.create({
-    container:{
-        height:'100%',
-        backgroundColor:'#FFFFFF',
-        width:'100%',
-        paddingTop:50,
-        paddingHorizontal:20
+
+    maincontainer: {
+        height: '100%',
+        backgroundColor: '#FFFFFF',
+        width: '100%',
+    },
+
+    container: {
+        height: '100%',
+        backgroundColor: '#FFFFFF',
+        width: '100%',
+        paddingTop: 80,
+        paddingHorizontal: 30
     },
 })
