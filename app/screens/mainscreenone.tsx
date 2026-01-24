@@ -1,9 +1,16 @@
 import Header from '@/components/header'
+import { useRouter } from 'expo-router'
 import React, { useState } from 'react'
-import { Image, Modal, Pressable, StyleSheet, Text, TouchableOpacity, View, TextInput } from 'react-native'
+import { Image, Modal, Pressable, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 
 export default function Mainscreenone() {
   const [isBottomSheetVisible, setIsBottomSheetVisible] = useState(false)
+
+  const router = useRouter()
+
+  const gotoUserdashboard = () => {
+    router.push('/screens/userdashboard')
+  }
 
   return (
     <View style={styles.container}>
