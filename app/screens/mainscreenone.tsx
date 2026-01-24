@@ -55,12 +55,12 @@ export default function Mainscreenone() {
           </Text>
 
           {/* register btns */}
-          <TouchableOpacity style={styles.googleBtn}>
+          <TouchableOpacity style={styles.googleBtn} onPress={gotoUserdashboard}>
             <Text style={styles.googleBtnText}>Continue with Google</Text>
             <Image style={styles.icons} source={{ uri: 'https://img.icons8.com/?size=100&id=17949&format=png&color=000000' }} />
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.facebookBtn}>
+          <TouchableOpacity style={styles.facebookBtn} onPress={gotoUserdashboard}>
             <Text style={styles.facebookBtnText}>Continue with Facebook</Text>
             <Image style={styles.icons} source={{ uri: 'https://img.icons8.com/?size=100&id=118497&format=png&color=000000' }} />
           </TouchableOpacity>
