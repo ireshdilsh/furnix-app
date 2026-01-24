@@ -5,7 +5,7 @@ import Header from '@/components/header'
 export default function Userdashboard() {
   return (
     <View style={styles.container}>
-        <Header/>
+    
         
     </View>
   )
@@ -13,6 +13,8 @@ export default function Userdashboard() {
 
 const styles = StyleSheet.create({
     container:{
-        
-    }
+        height:'100%',
+        backgroundColor:'#FFFFFF',
+        width:'100%'
+    },
 })

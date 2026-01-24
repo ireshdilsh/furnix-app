@@ -9,7 +9,7 @@ export default function Mainscreenone() {
   const router = useRouter()
 
   const gotoUserdashboard = () => {
-    router.push('/screens/userdashboard')
+    router.replace('/screens/userdashboard')
   }
 
   return (
