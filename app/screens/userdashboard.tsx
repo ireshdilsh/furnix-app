@@ -7,7 +7,7 @@ export default function Userdashboard() {
         <View style={styles.maincontainer}>
             <Header />
             <View style={styles.container}>
-                <Text>hsdfskdlf</Text>
+                <Text style={{fontSize: 28,fontFamily:'Roboto_500Medium',fontWeight: '800'}}>Hello World</Text>
             </View>
         </View>
     )
