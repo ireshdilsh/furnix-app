@@ -6,14 +6,14 @@ export default function index() {
 
   return (
     <View style={styles.container}>
-      <Landing/>
+      <Landing />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    
+
   },
 
 })
