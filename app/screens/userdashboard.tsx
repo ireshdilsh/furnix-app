@@ -7,7 +7,7 @@ export default function Userdashboard() {
         <View style={styles.maincontainer}>
             <Header />
             <View style={styles.container}>
-                <Text>Your Personalized Furix Home Experience</Text>
+                <Text>Your Personalized Furix{'\n'}Home Experience</Text>
             </View>
         </View>
     )
