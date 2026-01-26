@@ -7,7 +7,7 @@ export default function Userdashboard() {
         <View style={styles.maincontainer}>
             <Header />
             <View style={styles.container}>
-                <Text>Hello World</Text>
+                <Text>User Dasdhbaord</Text>
             </View>
         </View>
     )
