@@ -1,6 +1,7 @@
 import { View, Text, StyleSheet, TextInput, Image } from 'react-native'
 import React from 'react'
 import Header from '@/components/header'
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 export default function Userdashboard() {
     return (
@@ -9,9 +10,11 @@ export default function Userdashboard() {
             <View style={styles.container}>
                 <View style={styles.inputAndProfile}>
                     <Text style={styles.title}>Your Personalized Furix{'\n'}Home Experience</Text>
-                    <Image source={{uri : ''}}/>
+                    <View style={styles.notification}>
+                        <Ionicons name="notifications" size={20} color="#8d8d8d" />
+                    </View>
                 </View>
-                <TextInput style={styles.search} placeholder='Search'/>
+                <TextInput style={styles.search} placeholder='Search' />
             </View>
         </View>
     )
@@ -31,13 +34,24 @@ const styles = StyleSheet.create({
         backgroundColor: '#F9FAFB',
         borderRadius: 5,
         paddingHorizontal: 15,
-        marginTop:20,
+        marginTop: 20,
         borderColor: '#E5E7EB',
         borderWidth: 0.5,
     },
 
+    notification:{
+        display:'flex',
+        justifyContent:'center',
+        alignItems:'center',
+        height:50,
+        width:50,
+        borderColor:'#E5E7EB',
+        borderWidth:1,
+        borderRadius:250,
+    },
+
     title: {
-        fontSize: 24,
+        fontSize: 20,
         fontWeight: '700',
         color: '#4a5565',
         fontFamily: 'Roboto_700Bold',
@@ -47,8 +61,7 @@ const styles = StyleSheet.create({
         width: '100%',
         flexDirection: 'row',
         justifyContent: 'space-between',
-        alignItems: 'center',
-        marginTop: 20
+        marginTop: 20,
     },
 
     container: {
