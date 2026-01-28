@@ -7,7 +7,7 @@ export default function Userdashboard() {
         <View style={styles.maincontainer}>
             <Header />
             <View style={styles.container}>
-                <Text>Your Personalized Furix{'\n'}Home Experience</Text>
+                <Text style={styles.title}>Your Personalized Furix{'\n'}Home Experience</Text>
             </View>
         </View>
     )
@@ -19,6 +19,14 @@ const styles = StyleSheet.create({
         height: '100%',
         backgroundColor: '#FFFFFF',
         width: '100%',
+    },
+
+    title: {
+        fontSize: 25,
+        fontWeight: '700',
+        color: '#4a5565',
+        fontFamily: 'Roboto_700Bold',
+        marginBottom: 20,
     },
 
     container: {
