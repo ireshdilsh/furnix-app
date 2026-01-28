@@ -11,7 +11,7 @@ export default function Userdashboard() {
                 <View style={styles.inputAndProfile}>
                     <Text style={styles.title}>Your Personalized Furix{'\n'}Home Experience</Text>
                     <View style={styles.notification}>
-                        <Ionicons name="notifications" size={17} color="#8d8d8d" onPress={() => { alert('click the notification') }} />
+                        <Ionicons name="cart" size={19} color="#8d8d8d" onPress={() => { alert('click the notification') }} />
                     </View>
                 </View>
                 <TextInput style={styles.search} placeholder='Search' />
@@ -43,8 +43,8 @@ const styles = StyleSheet.create({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        height: 40,
-        width: 40,
+        height: 42,
+        width: 42,
         borderColor: '#E5E7EB',
         borderWidth: 1,
         borderRadius: 250,
