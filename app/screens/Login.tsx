@@ -1,8 +1,8 @@
-import { View, Text, Image, Pressable, TextInput, TouchableOpacity } from 'react-native'
-import React, { useState } from 'react'
-import Header from '@/components/header'
-import { useRouter } from 'expo-router'
+import Header from '@/components/header';
 import { Checkbox } from 'expo-checkbox';
+import { useRouter } from 'expo-router';
+import React, { useState } from 'react';
+import { Image, KeyboardAvoidingView, Platform, Pressable, ScrollView, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
 export default function Login() {
 
@@ -15,47 +15,33 @@ export default function Login() {
     const [isChecked, setChecked] = useState(false);
 
     return (
-        <View style={{
-            flex: 1
-        }}>
-
-            <Header />
-
+        <KeyboardAvoidingView 
+            style={{ flex: 1 }}
+            behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        >
             <View style={{
-                width: '100%',
-                paddingHorizontal: 35,
-                flex: 1,
-                justifyContent: 'flex-start',
-                alignItems: 'flex-start'
+                flex: 1
             }}>
 
-                <Pressable onPress={gotoBack} style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    flexDirection: 'row',
-                    gap: 10,
-                    marginTop: 100
-                }}>
-                    <Image style={{
-                        height: 20,
-                        width: 20,
-                    }}
-                        source={{ uri: "https://img.icons8.com/?size=100&id=26144&format=png&color=#545454" }} />
+                <Header />
 
-                    <Text style={{
-                        fontWeight: '500',
-                        color: '#545454',
-                        fontSize: 14
-                    }}>
-                        Back</Text>
-                </Pressable>
+                <ScrollView 
+                    style={{
+                        flex: 1,
+                    }}
+                    contentContainerStyle={{
+                        paddingHorizontal: 35,
+                        paddingBottom: 30
+                    }}
+                    showsVerticalScrollIndicator={false}
+                    keyboardShouldPersistTaps="handled"
+                >
 
                 <Text style={{
                     fontSize: 22,
                     fontWeight: '500',
                     color: '#545454',
-                    marginTop: 20
+                    marginTop: 100
                 }}>Access Your Furnix Account</Text>
 
                 <Text style={{
@@ -67,7 +53,7 @@ export default function Login() {
                 {/* Full Name */}
                 <Text style={{
                     color: '#545454',
-                    marginTop: 30,
+                    marginTop: 50,
                     fontSize: 15,
                 }}>
                     Full Name
@@ -148,7 +134,7 @@ export default function Login() {
                 }}>
                     <Checkbox
                         style={{
-                            marginVertical: 15,
+                            marginVertical: 20,
                         }}
                         value={isChecked}
                         onValueChange={setChecked}
@@ -207,7 +193,7 @@ export default function Login() {
                     alignItems: 'center',
                     width: '100%',
                     flexDirection: 'row',
-                    marginTop: 20
+                    marginTop: 28
                 }}>
                     <Text style={{
                         color: '#545454',
@@ -219,7 +205,8 @@ export default function Login() {
                         textDecorationLine: 'underline'
                     }}>Login</Text>
                 </View>
+                </ScrollView>
             </View>
-        </View>
+        </KeyboardAvoidingView>
     )
 }
