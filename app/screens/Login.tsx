@@ -148,7 +148,7 @@ export default function Login() {
                 }}>
                     <Checkbox
                         style={{
-                            marginTop: 10,
+                            marginVertical: 15,
                         }}
                         value={isChecked}
                         onValueChange={setChecked}
@@ -177,16 +177,16 @@ export default function Login() {
                 </TouchableOpacity>
 
                 <TouchableOpacity style={{
-                    flexDirection:'row',
-                    flex:1,
-                    justifyContent:'center',
-                    alignItems:'center',
-                    gap:10,
+                    flexDirection: 'row',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    gap: 10,
                     width: '100%',
                     height: 48,
                     borderWidth: 1,
                     borderColor: "#E5E7EB",
-                    marginTop: 20,
+                    marginTop: 10,
                     borderRadius: 5,
                 }}>
                     <Text style={{
@@ -194,14 +194,31 @@ export default function Login() {
                         fontSize: 15,
                         fontWeight: '600',
                         textAlign: 'center',
-                    }}>Continue With Google
-                    </Text>
-                    <Image style={{
-                            height: 22,
-                            width: 22,
-                        }} source={{ uri: 'https://img.icons8.com/?size=100&id=17949&format=png&color=000000' }} />
-                </TouchableOpacity>
+                    }}>Continue With Google</Text>
 
+                    <Image style={{
+                        height: 22,
+                        width: 22,
+                    }} source={{ uri: 'https://img.icons8.com/?size=100&id=17949&format=png&color=000000' }} />
+                </TouchableOpacity>
+                <View style={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    width: '100%',
+                    flexDirection: 'row',
+                    marginTop: 20
+                }}>
+                    <Text style={{
+                        color: '#545454',
+                        fontWeight: '400'
+                    }}>Already have an account?</Text>
+                    <Text style={{
+                        color: '#545454',
+                        fontWeight: '500',
+                        textDecorationLine: 'underline'
+                    }}>Login</Text>
+                </View>
             </View>
         </View>
     )
