@@ -26,7 +26,7 @@ export default function Login() {
         <Pressable style={{
           backgroundColor: '#545454',
           width: '100%',
-          height: 47,
+          height: 46,
           marginTop: 50,
           borderRadius: 5,
         }}>
