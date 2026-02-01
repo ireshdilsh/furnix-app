@@ -1,17 +1,45 @@
-import { View, Text } from 'react-native'
+import { View, Text, Image, Pressable } from 'react-native'
 import React from 'react'
 
 export default function Login() {
   return (
     <View style={{
-      paddingHorizontal: 30,
+      paddingHorizontal: 35,
       flex: 1,
       justifyContent: 'center',
       alignItems: 'center'
     }}>
 
       <View style={{ width: '100%' }}>
-        <Text style={{ color: '#545454', textAlign: 'center' }}>Buy modern furniture online easily with the Furnix mobile app.</Text>
+        <Image source={require('../../assets/images/FURNIX-removebg-preview.png')} style={{
+          height: 100,
+          width: 90,
+          marginBottom: 20,
+          alignSelf: 'center'
+        }} />
+
+        <Text style={{
+          color: '#545454',
+          textAlign: 'center'
+        }}>Buy modern furniture online easily with{'\n'}the Furnix mobile app.</Text>
+
+        <Pressable style={{
+          backgroundColor: '#545454',
+          width: '100%',
+          height: 50,
+          marginTop: 50,
+          borderRadius: 5,
+        }}>
+          <Text style={{
+            color: '#ffffff',
+            textAlign: 'center',
+            lineHeight: 45,
+            fontWeight: '600',
+          }}>
+            Get Started
+          </Text>
+        </Pressable>
+
       </View>
 
     </View>
