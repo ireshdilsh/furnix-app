@@ -18,8 +18,8 @@ export default function Authentication() {
         alignItems: 'center'
       }}>
         <Image source={require('../../assets/images/FURNIX-removebg-preview.png')} style={{
-          height: 100,
-          width: 90,
+          height: 110,
+          width: 100,
           marginBottom: 20,
           alignSelf: 'center'
         }} />
