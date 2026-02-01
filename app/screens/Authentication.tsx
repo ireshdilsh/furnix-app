@@ -1,8 +1,18 @@
-import { View, Text, Image, Pressable } from 'react-native'
-import React from 'react'
+import { View, Text, Image, Pressable, Modal, StyleSheet } from 'react-native'
+import React, { useState } from 'react'
 import Header from '@/components/header'
 
 export default function Authentication() {
+  const [isBottomSheetVisible, setIsBottomSheetVisible] = useState(false)
+
+  const handleGetStarted = () => {
+    setIsBottomSheetVisible(true)
+  }
+
+  const handleCloseBottomSheet = () => {
+    setIsBottomSheetVisible(false)
+  }
+
   return (
     <View style={{
       flex: 1,
