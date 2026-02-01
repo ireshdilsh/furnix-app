@@ -43,7 +43,9 @@ export default function Authentication() {
           height: 46,
           marginTop: 40,
           borderRadius: 5,
-        }}>
+        }}
+          onPress={gotoLoginScreen}>
+
           <Text style={{
             color: '#ffffff',
             textAlign: 'center',
