@@ -1,16 +1,22 @@
 import { View, Text, Image, Pressable } from 'react-native'
 import React from 'react'
+import Header from '@/components/header'
 
-export default function Login() {
+export default function Authentication() {
   return (
     <View style={{
-      paddingHorizontal: 35,
       flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center'
     }}>
 
-      <View style={{ width: '100%' }}>
+      <Header />
+
+      <View style={{
+        width: '100%',
+        paddingHorizontal: 35,
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
+      }}>
         <Image source={require('../../assets/images/FURNIX-removebg-preview.png')} style={{
           height: 100,
           width: 90,
@@ -21,13 +27,13 @@ export default function Login() {
         <Text style={{
           color: '#545454',
           textAlign: 'center'
-        }}>Buy modern furniture online easily with{'\n'}the Furnix mobile app.</Text>
+        }}>Furnix makes furniture shopping simple, fast, and convenient online.</Text>
 
         <Pressable style={{
           backgroundColor: '#545454',
           width: '100%',
           height: 46,
-          marginTop: 50,
+          marginTop: 40,
           borderRadius: 5,
         }}>
           <Text style={{
