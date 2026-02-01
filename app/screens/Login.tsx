@@ -9,9 +9,11 @@ export default function Login() {
       justifyContent: 'center',
       alignItems: 'center'
     }}>
-     <View style={{width: '100%',backgroundColor:'red', padding: 20, borderRadius: 10}}>
-      
-     </View>
+
+      <View style={{ width: '100%' }}>
+        <Text style={{ color: '#545454', textAlign: 'center' }}>Buy modern furniture online easily with the Furnix mobile app.</Text>
+      </View>
+
     </View>
   )
 }
