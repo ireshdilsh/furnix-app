@@ -1,8 +1,16 @@
 import Header from '@/components/header'
+import { useRouter } from 'expo-router';
 import React from 'react'
 import { Image, Pressable, Text, View } from 'react-native'
 
 export default function Authentication() {
+
+  const router = useRouter();
+
+  const gotoLoginScreen = () => {
+    router.push('/screens/Login');
+  }
+
   return (
     <View style={{
       flex: 1,
