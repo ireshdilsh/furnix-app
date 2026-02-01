@@ -8,7 +8,7 @@ export default function Authentication() {
   const router = useRouter();
 
   const gotoLoginScreen = () => {
-    router.push('/screens/Login');
+    router.push('/screens/Register');
   }
 
   return (
