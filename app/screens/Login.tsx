@@ -26,14 +26,9 @@ export default function Login() {
         <Pressable style={{
           backgroundColor: '#545454',
           width: '100%',
-          height: 50,
+          height: 47,
           marginTop: 50,
           borderRadius: 5,
-          display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'center',
-          alignItems: 'center',
-          gap: 10,
         }}>
           <Text style={{
             color: '#ffffff',
@@ -43,11 +38,6 @@ export default function Login() {
           }}>
             Get Started
           </Text>
-          <Image source={{ uri: "https://img.icons8.com/?size=100&id=26138&format=png&color=ffffff" }} style={{
-            width: 20,
-            height: 20,
-          }}
-          />
         </Pressable>
 
       </View>
