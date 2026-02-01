@@ -9,13 +9,14 @@ export default function index() {
 
     useEffect(() => {
         setTimeout(() => {
-            router.replace('/'); 
+            // @ts-ignore
+            router.replace("/screens/Login");
         }, 5000);
     });
 
     return (
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#fff' }}>
-            <Image source={require('../assets/images/FURNIX-removebg-preview.png')} style={{ width: 200, height: 200 }} />
+            <Image source={require('../assets/images/FURNIX-removebg-preview.png')} style={{ width: 150, height: 200 }} />
         </View>
     )
 }
