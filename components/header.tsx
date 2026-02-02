@@ -52,8 +52,8 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         gap: 4,
         width: '88%',
-        backgroundColor:'#fff',
-        paddingTop:22,
+        backgroundColor: '#fff',
+        paddingTop: 22,
         zIndex: 1
     },
 
