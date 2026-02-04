@@ -8,6 +8,8 @@ export default function Register() {
 
     const router = useRouter()
 
+    // this is register sceen, so we need to create a state for the checkbox
+
     const [isChecked, setChecked] = useState(false);
 
     return (
