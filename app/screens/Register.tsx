@@ -8,6 +8,10 @@ export default function Register() {
 
     const router = useRouter()
 
+    const gotoLogin = () => {
+        router.replace('/screens/Login')
+    }
+
     const [isChecked, setChecked] = useState(false);
 
     return (
@@ -195,7 +199,7 @@ export default function Register() {
                             color: '#545454',
                             fontWeight: '400'
                         }}>Already have an account?</Text>
-                        <Text onPress={()=>{router.replace('/screens/Login')}} style={{
+                        <Text onPress={gotoLogin} style={{
                             color: '#545454',
                             fontWeight: '500',
                             textDecorationLine: 'underline'
