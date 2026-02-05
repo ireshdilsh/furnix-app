@@ -6,7 +6,7 @@ import { Image, KeyboardAvoidingView, Platform, ScrollView, Text, TextInput, Tou
 
 export default function Register() {
 
-    // const router = useRouter()
+    const router = useRouter()
 
     const [isChecked, setChecked] = useState(false);
 
@@ -195,7 +195,7 @@ export default function Register() {
                             color: '#545454',
                             fontWeight: '400'
                         }}>Already have an account?</Text>
-                        <Text style={{
+                        <Text onPress={()=>{router.replace('/screens/Login')}} style={{
                             color: '#545454',
                             fontWeight: '500',
                             textDecorationLine: 'underline'
