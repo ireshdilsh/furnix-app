@@ -93,33 +93,61 @@ const AuthBottomSheet = forwardRef<AuthBottomSheetRefProps, AuthBottomSheetProps
         
         <GestureDetector gesture={gesture}>
           <Animated.View style={[styles.bottomSheetContainer, rBottomSheetStyle]}>
-            <View style={styles.line} />
+            <View style={styles.handle}>
+              <View style={styles.handleBar} />
+            </View>
             
             <View style={styles.content}>
-              <Text style={styles.title}>Welcome to Furnix</Text>
-              <Text style={styles.subtitle}>
-                Sign in to explore and shop quality furniture
-              </Text>
-
-              <TouchableOpacity style={styles.googleButton}>
-                <Ionicons name="logo-google" size={24} color="#DB4437" />
-                <Text style={styles.googleButtonText}>Continue with Google</Text>
-              </TouchableOpacity>
-
-              <View style={styles.divider}>
-                <View style={styles.dividerLine} />
-                <Text style={styles.dividerText}>or</Text>
-                <View style={styles.dividerLine} />
+              {/* Header */}
+              <View style={styles.header}>
+                <View style={styles.iconWrapper}>
+                  <Ionicons name="sparkles" size={32} color="#F59E0B" />
+                </View>
+                <Text style={styles.title}>Start Your Journey</Text>
+                <Text style={styles.subtitle}>
+                  Join our community and discover premium furniture for your perfect space
+                </Text>
               </View>
 
-              <TouchableOpacity style={styles.emailButton}>
-                <Ionicons name="mail-outline" size={24} color="#1F2937" />
-                <Text style={styles.emailButtonText}>Continue with Email</Text>
+              {/* Google Auth Button */}
+              <TouchableOpacity style={styles.googleButton} activeOpacity={0.85}>
+                <View style={styles.googleIconWrapper}>
+                  <Ionicons name="logo-google" size={24} color="#DB4437" />
+                </View>
+                <Text style={styles.googleButtonText}>Sign in with Google</Text>
+                <View style={styles.arrowWrapper}>
+                  <Ionicons name="arrow-forward" size={20} color="#475569" />
+                </View>
               </TouchableOpacity>
 
+              {/* Features */}
+              <View style={styles.features}>
+                <View style={styles.featureItem}>
+                  <Ionicons name="checkmark-circle" size={20} color="#10B981" />
+                  <Text style={styles.featureText}>No credit card required</Text>
+                </View>
+                <View style={styles.featureItem}>
+                  <Ionicons name="checkmark-circle" size={20} color="#10B981" />
+                  <Text style={styles.featureText}>Free returns & exchanges</Text>
+                </View>
+                <View style={styles.featureItem}>
+                  <Ionicons name="checkmark-circle" size={20} color="#10B981" />
+                  <Text style={styles.featureText}>Exclusive member deals</Text>
+                </View>
+              </View>
+
+              {/* Privacy Note */}
+              <View style={styles.privacyNote}>
+                <Ionicons name="shield-checkmark" size={16} color="#64748B" />
+                <Text style={styles.privacyText}>
+                  Your data is secure and protected
+                </Text>
+              </View>
+
+              {/* Terms */}
               <Text style={styles.terms}>
                 By continuing, you agree to our{' '}
-                <Text style={styles.termsLink}>Terms of Service</Text> and{' '}
+                <Text style={styles.termsLink}>Terms</Text> &{' '}
                 <Text style={styles.termsLink}>Privacy Policy</Text>
               </Text>
             </View>
@@ -135,7 +163,7 @@ AuthBottomSheet.displayName = 'AuthBottomSheet';
 const styles = StyleSheet.create({
   backdrop: {
     ...StyleSheet.absoluteFillObject,
-    backgroundColor: 'rgba(0, 0, 0, 0.4)',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
     zIndex: 1,
   },
   backdropTouchable: {
@@ -147,102 +175,141 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
     position: 'absolute',
     top: SCREEN_HEIGHT,
-    borderTopLeftRadius: 25,
-    borderTopRightRadius: 25,
+    borderTopLeftRadius: 32,
+    borderTopRightRadius: 32,
     zIndex: 2,
-    elevation: 5,
+    elevation: 10,
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
-      height: -2,
+      height: -4,
     },
     shadowOpacity: 0.25,
-    shadowRadius: 3.84,
+    shadowRadius: 12,
   },
-  line: {
-    width: 50,
-    height: 4,
-    backgroundColor: '#D1D5DB',
-    marginVertical: 15,
-    alignSelf: 'center',
-    borderRadius: 2,
+  handle: {
+    paddingVertical: 16,
+    alignItems: 'center',
+  },
+  handleBar: {
+    width: 40,
+    height: 5,
+    backgroundColor: '#E2E8F0',
+    borderRadius: 3,
   },
   content: {
-    paddingHorizontal: 30,
-    paddingTop: 20,
+    paddingHorizontal: 24,
+    paddingBottom: 32,
+  },
+  header: {
+    alignItems: 'center',
+    marginBottom: 32,
+  },
+  iconWrapper: {
+    width: 64,
+    height: 64,
+    borderRadius: 32,
+    backgroundColor: '#FEF3C7',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 16,
   },
   title: {
-    fontSize: 28,
-    fontWeight: '700',
-    color: '#1F2937',
+    fontSize: 26,
+    fontWeight: '800',
+    color: '#0F172A',
+    marginBottom: 12,
     textAlign: 'center',
-    marginBottom: 10,
   },
   subtitle: {
     fontSize: 15,
-    color: '#6B7280',
+    color: '#64748B',
     textAlign: 'center',
-    marginBottom: 40,
     lineHeight: 22,
+    paddingHorizontal: 12,
   },
   googleButton: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     backgroundColor: '#FFFFFF',
-    borderWidth: 1.5,
-    borderColor: '#E5E7EB',
-    paddingVertical: 16,
+    borderWidth: 2,
+    borderColor: '#E2E8F0',
+    paddingVertical: 18,
+    paddingHorizontal: 20,
+    borderRadius: 16,
+    marginBottom: 24,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.05,
+    shadowRadius: 4,
+    elevation: 2,
+  },
+  googleIconWrapper: {
+    width: 40,
+    height: 40,
     borderRadius: 12,
-    gap: 12,
-    marginBottom: 20,
+    backgroundColor: '#F8FAFC',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   googleButtonText: {
-    fontSize: 16,
-    fontWeight: '600',
-    color: '#1F2937',
+    flex: 1,
+    fontSize: 17,
+    fontWeight: '700',
+    color: '#0F172A',
+    marginLeft: 12,
   },
-  divider: {
+  arrowWrapper: {
+    width: 32,
+    height: 32,
+    borderRadius: 8,
+    backgroundColor: '#F1F5F9',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  features: {
+    marginBottom: 24,
+    gap: 12,
+  },
+  featureItem: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginVertical: 20,
+    gap: 10,
   },
-  dividerLine: {
-    flex: 1,
-    height: 1,
-    backgroundColor: '#E5E7EB',
-  },
-  dividerText: {
-    marginHorizontal: 16,
-    fontSize: 14,
-    color: '#9CA3AF',
+  featureText: {
+    fontSize: 15,
+    color: '#475569',
     fontWeight: '500',
   },
-  emailButton: {
+  privacyNote: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#1F2937',
-    paddingVertical: 16,
+    gap: 8,
+    paddingVertical: 12,
+    paddingHorizontal: 16,
+    backgroundColor: '#F8FAFC',
     borderRadius: 12,
-    gap: 12,
-    marginBottom: 24,
+    marginBottom: 20,
   },
-  emailButtonText: {
-    fontSize: 16,
-    fontWeight: '600',
-    color: '#FFFFFF',
+  privacyText: {
+    fontSize: 13,
+    color: '#64748B',
+    fontWeight: '500',
   },
   terms: {
-    fontSize: 13,
-    color: '#9CA3AF',
+    fontSize: 12,
+    color: '#94A3B8',
     textAlign: 'center',
-    lineHeight: 20,
-    paddingHorizontal: 10,
+    lineHeight: 18,
   },
   termsLink: {
-    color: '#1F2937',
-    fontWeight: '600',
+    color: '#0F172A',
+    fontWeight: '700',
     textDecorationLine: 'underline',
   },
 });
