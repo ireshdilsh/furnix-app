@@ -25,6 +25,7 @@ export default function index() {
     return (
         <View style={styles.container}>
             <Text style={styles.appName}>Furnix</Text>
+            <Text style={styles.appSubtitle}>Furniture</Text>
         </View>
     )
 }
@@ -39,6 +40,14 @@ const styles = StyleSheet.create({
     appName: {
         fontFamily: 'Pacifico',
         fontSize: 48,
-        color: '#545454'
+        color: '#333'
+    },
+
+    appSubtitle: {
+        fontFamily: 'Josefin-Bold',
+        fontSize: 20,
+        marginTop: -22,
+        color: '#333',
+        marginLeft: 55
     }
 })
