@@ -30,12 +30,12 @@ export default function index() {
                 style={styles.maskedView}
                 maskElement={
                     <View style={styles.maskContainer}>
-                        <Text style={styles.text}>FURNIX</Text>
+                        <Text style={styles.appName}>Furnix</Text>
                     </View>
                 }
             >
                 <LinearGradient
-                    colors={['#00f2fe', '#4facfe']} // Cyan to Blue gradient
+                    colors={['#00f2fe', '#4facfe']}
                     start={{ x: 0, y: 0 }}
                     end={{ x: 1, y: 0 }}
                     style={styles.gradient}
@@ -48,6 +48,7 @@ export default function index() {
 
 const styles = StyleSheet.create({
     container: {
+        flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
         marginVertical: 20,
@@ -63,10 +64,9 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
-    text: {
-        fontSize: 60,
-        fontWeight: '900', // Heavy weight looks best with gradients
-        color: 'black',   // This color doesn't matter, it just needs to be solid
+    appName: {
+        fontFamily: 'Pacifico',
+        fontSize: 48,
     },
     gradient: {
         flex: 1,
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
     appSubtitle: {
         fontFamily: 'Josefin-Bold',
         fontSize: 20,
-        marginTop: -22,
+        marginTop: -10,
         color: '#718096',
         marginLeft: 55
     }
