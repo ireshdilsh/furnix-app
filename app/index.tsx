@@ -3,6 +3,8 @@ import { useEffect } from 'react';
 import { StyleSheet, View, Text } from 'react-native'
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
+import { LinearGradient } from 'expo-linear-gradient';
+import MaskedView from '@react-native-masked-view/masked-view';
 
 export default function index() {
 
@@ -24,23 +26,50 @@ export default function index() {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.appName}>Furnix</Text>
-            <Text style={styles.appSubtitle}>Furniture</Text>
+            <MaskedView
+                style={styles.maskedView}
+                maskElement={
+                    <View style={styles.maskContainer}>
+                        <Text style={styles.text}>FURNIX</Text>
+                    </View>
+                }
+            >
+                {/* This is the gradient that will fill the "FURNIX" text */}
+                <LinearGradient
+                    colors={['#00f2fe', '#4facfe']} // Cyan to Blue gradient
+                    start={{ x: 0, y: 0 }}
+                    end={{ x: 1, y: 0 }}
+                    style={styles.gradient}
+                />
+            </MaskedView>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginVertical: 20,
+    },
+    maskedView: {
+        height: 80, // Adjust based on your font size
+        width: '100%',
+        flexDirection: 'row',
+    },
+    maskContainer: {
+        backgroundColor: 'transparent',
         flex: 1,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
     },
-
-    appName: {
-        fontFamily: 'Pacifico',
-        fontSize: 48,
-        color: '#4a5565'
+    text: {
+        fontSize: 60,
+        fontWeight: '900', // Heavy weight looks best with gradients
+        color: 'black',   // This color doesn't matter, it just needs to be solid
+    },
+    gradient: {
+        flex: 1,
     },
 
     appSubtitle: {
