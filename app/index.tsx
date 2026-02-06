@@ -34,7 +34,6 @@ export default function index() {
                     </View>
                 }
             >
-                {/* This is the gradient that will fill the "FURNIX" text */}
                 <LinearGradient
                     colors={['#00f2fe', '#4facfe']} // Cyan to Blue gradient
                     start={{ x: 0, y: 0 }}
