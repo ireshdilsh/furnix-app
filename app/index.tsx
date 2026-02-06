@@ -41,6 +41,7 @@ export default function index() {
                     style={styles.gradient}
                 />
             </MaskedView>
+            <Text style={styles.appSubtitle}>Furniture</Text>
         </View>
     )
 }
