@@ -35,9 +35,9 @@ export default function index() {
                 }
             >
                 <LinearGradient
-                    colors={['#00f2fe', '#4facfe']}
+                    colors={['#9f2d00', '#ff8904','#ffb86a','#ffedd4']}
                     start={{ x: 0, y: 0 }}
-                    end={{ x: 1, y: 0 }}
+                    end={{ x: 1, y: 1 }}
                     style={styles.gradient}
                 />
             </MaskedView>
@@ -52,6 +52,9 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         marginVertical: 20,
+        // backgroundColor:'#ffedd4',
+        height:'100%',
+        width:'100%'
     },
     maskedView: {
         height: 80, // Adjust based on your font size
@@ -74,9 +77,9 @@ const styles = StyleSheet.create({
 
     appSubtitle: {
         fontFamily: 'Josefin-Bold',
-        fontSize: 20,
+        fontSize: 16,
         marginTop: -10,
         color: '#718096',
-        marginLeft: 55
+        marginLeft: 75
     }
 })
