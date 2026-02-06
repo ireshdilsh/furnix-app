@@ -5,6 +5,9 @@ import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { LinearGradient } from 'expo-linear-gradient';
 import MaskedView from '@react-native-masked-view/masked-view';
+import { useRouter } from 'expo-router';
+
+SplashScreen.preventAutoHideAsync();
 
 export default function index() {
 
@@ -24,6 +27,14 @@ export default function index() {
         return null;
     }
 
+    const router = useRouter()
+
+    useEffect(() => {
+        setTimeout(() => {
+            router.replace('/screens/MainScreen')
+        }, 5000);
+    });
+
     return (
         <View style={styles.container}>
             <MaskedView
@@ -35,7 +46,7 @@ export default function index() {
                 }
             >
                 <LinearGradient
-                    colors={['#9f2d00', '#ff8904','#ffb86a','#ffedd4']}
+                    colors={['#e17100', '#ff8904', '#ffb86a', '#ffedd4']}
                     start={{ x: 0, y: 0 }}
                     end={{ x: 1, y: 1 }}
                     style={styles.gradient}
@@ -53,8 +64,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         marginVertical: 20,
         // backgroundColor:'#ffedd4',
-        height:'100%',
-        width:'100%'
+        height: '100%',
+        width: '100%'
     },
     maskedView: {
         height: 80, // Adjust based on your font size
@@ -77,9 +88,9 @@ const styles = StyleSheet.create({
 
     appSubtitle: {
         fontFamily: 'Josefin-Bold',
-        fontSize: 16,
+        fontSize: 17,
         marginTop: -10,
         color: '#718096',
-        marginLeft: 75
+        marginLeft: 70
     }
 })
