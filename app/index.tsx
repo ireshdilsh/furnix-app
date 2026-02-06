@@ -40,14 +40,14 @@ const styles = StyleSheet.create({
     appName: {
         fontFamily: 'Pacifico',
         fontSize: 48,
-        color: '#333'
+        color: '#4a5565'
     },
 
     appSubtitle: {
         fontFamily: 'Josefin-Bold',
         fontSize: 20,
         marginTop: -22,
-        color: '#333',
+        color: '#718096',
         marginLeft: 55
     }
 })
