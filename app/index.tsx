@@ -1,8 +1,10 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { StyleSheet, View, Text } from 'react-native'
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
+import MaskedView from '@react-native-masked-view/masked-view';
+import { LinearGradient } from 'expo-linear-gradient';
 
 export default function index() {
 
@@ -24,8 +26,19 @@ export default function index() {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.appName}>Furnix</Text>
-            <Text style={styles.appSubtitle}>Furniture</Text>
+            {/* <Text style={styles.appName}>Furnix</Text>
+            <Text style={styles.appSubtitle}>Furniture</Text> */}
+            <MaskedView
+                style={{ height: 24 }}
+                maskElement={<Text style={styles.appName}>Furnix</Text>}
+            >
+                <LinearGradient
+                    colors={['cadetblue', '#fabada']}
+                    start={{ x: 1, y: 1 }}
+                    end={{ x: 0, y: 0.33 }}
+                    style={{ flex: 1 }}
+                />
+            </MaskedView>
         </View>
     )
 }
