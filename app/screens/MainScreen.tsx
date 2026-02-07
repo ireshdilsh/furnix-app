@@ -21,18 +21,29 @@ export default function MainScreen() {
     }, [loaded, error]);
 
     return (
-        <View>
-            <Text style={styles.title}>MainScreen</Text>
+        <View style={styles.container}>
+            <Text style={styles.title}>Where Style{'\n'}Meets Comfort</Text>
+            <Text style={styles.description}>Create beautiful spaces with designs that feel as good as they look.</Text>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
+
+    container: {
+        paddingHorizontal: 45,
+    },
+
     title: {
         fontFamily: 'Josefin-Bold',
-        fontSize: 24,
-        color: '#333',
+        fontSize: 25,
+        color: '#4a5565',
         marginTop: 50,
-        marginLeft: 150
+    },
+
+    description: {
+        marginTop: 5,
+        color: '#718096',
+        fontSize: 15
     }
 })
