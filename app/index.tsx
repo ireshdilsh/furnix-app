@@ -6,15 +6,16 @@ import * as SplashScreen from 'expo-splash-screen';
 import { LinearGradient } from 'expo-linear-gradient';
 import MaskedView from '@react-native-masked-view/masked-view';
 import { useRouter } from 'expo-router';
+import { Fonts } from '@/config/Fonts';
 
 SplashScreen.preventAutoHideAsync();
 
 export default function index() {
 
     const [loaded, error] = useFonts({
-        'Josefin': require('../fonts/josefin/static/JosefinSans-Medium.ttf'),
-        'Josefin-Bold': require('../fonts/josefin/static/JosefinSans-Bold.ttf'),
-        'Pacifico': require('../fonts/pacifico/Pacifico-Regular.ttf'),
+        'Josefin': Fonts.Josefin,
+        'Josefin-Bold': Fonts.JosefinBold,
+        'Pacifico': Fonts.Pacifico,
     });
 
     useEffect(() => {
