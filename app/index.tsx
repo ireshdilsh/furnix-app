@@ -1,12 +1,12 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { useEffect } from 'react';
-import { StyleSheet, View, Text } from 'react-native'
-import { useFonts } from 'expo-font';
-import * as SplashScreen from 'expo-splash-screen';
-import { LinearGradient } from 'expo-linear-gradient';
-import MaskedView from '@react-native-masked-view/masked-view';
-import { useRouter } from 'expo-router';
 import { Fonts } from '@/config/Fonts';
+import MaskedView from '@react-native-masked-view/masked-view';
+import { useFonts } from 'expo-font';
+import { LinearGradient } from 'expo-linear-gradient';
+import { useRouter } from 'expo-router';
+import * as SplashScreen from 'expo-splash-screen';
+import { useEffect } from 'react';
+import { StyleSheet, Text, View } from 'react-native';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -18,23 +18,26 @@ export default function index() {
         'Pacifico': Fonts.Pacifico,
     });
 
+    const router = useRouter()
+
     useEffect(() => {
         if (loaded || error) {
             SplashScreen.hideAsync();
         }
     }, [loaded, error]);
 
+    useEffect(() => {
+        if (loaded || error) {
+            const timer = setTimeout(() => {
+                router.replace('/screens/MainScreen')
+            }, 5000);
+            return () => clearTimeout(timer);
+        }
+    }, [loaded, error, router]);
+
     if (!loaded && !error) {
         return null;
     }
-
-    const router = useRouter()
-
-    useEffect(() => {
-        setTimeout(() => {
-            router.replace('/screens/MainScreen')
-        }, 5000);
-    });
 
     return (
         <View style={styles.container}>
