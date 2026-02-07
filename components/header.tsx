@@ -44,7 +44,7 @@ export default function Header() {
 }
 
 const styles = StyleSheet.create({
-    
+
     container: {
         position: 'absolute',
         top: 5,
@@ -104,5 +104,5 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         gap: 10
     }
-    
+
 })
