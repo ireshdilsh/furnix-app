@@ -81,6 +81,6 @@ const styles = StyleSheet.create({
     },
 
     buttonIcon: {
-        marginTop: 5
+        marginTop: 6
     }
 })
