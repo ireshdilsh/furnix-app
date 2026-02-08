@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
         paddingVertical: 12,
         paddingHorizontal: 25,
         borderRadius: 25,
-        marginTop: 25,
+        marginTop: 60,
         alignSelf: 'center',
         width: '100%',
         display: 'flex',
@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
     blur_1: {
         height: 200,
         width: 200,
-        backgroundColor: '#ffb76ab1',
+        backgroundColor: '#f68403',
         position: 'absolute',
         filter: 'blur(350px)',
         zIndex: 1,
@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
     blur_2: {
         height: 200,
         width: 200,
-        backgroundColor: '#ffb76ab1',
+        backgroundColor: '#f68403',
         position: 'absolute',
         right: 0,
         filter: 'blur(350px)',
