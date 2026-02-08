@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Touchable, TouchableOpacity } from 'react-native'
+import { View, Text, StyleSheet, Pressable } from 'react-native'
 import React, { useEffect } from 'react'
 import { Fonts } from '@/config/Fonts';
 import { useFonts } from 'expo-font';
@@ -28,11 +28,13 @@ export default function MainScreen() {
             <View style={styles.container}>
                 <Text style={styles.title}>Where Style{'\n'}Meets Comfort</Text>
                 <Text style={styles.description}>Create beautiful spaces with designs that feel as good as they look.</Text>
-                <TouchableOpacity style={styles.button}>
+                <Pressable style={styles.button}>
                     <Text style={styles.buttonText}>Get Started</Text>
                     <AntDesign style={styles.buttonIcon} name="right-circle" size={15} color="white" />
-                </TouchableOpacity>
+                </Pressable>
             </View>
+            <View style={styles.blur_1}></View>
+            <View style={styles.blur_2}></View>
         </View>
     )
 }
@@ -82,5 +84,25 @@ const styles = StyleSheet.create({
 
     buttonIcon: {
         marginTop: 6
+    },
+
+    blur_1: {
+        height: 200,
+        width: 200,
+        backgroundColor: '#ffb76ab1',
+        position: 'absolute',
+        filter: 'blur(350px)',
+        zIndex: 1,
+    },
+
+    blur_2: {
+        height: 200,
+        width: 200,
+        backgroundColor: '#ffb76ab1',
+        position: 'absolute',
+        right: 0,
+        filter: 'blur(350px)',
+        zIndex: 1,
     }
+
 })
