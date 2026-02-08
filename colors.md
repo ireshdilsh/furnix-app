@@ -4,3 +4,4 @@ input-fields -> backgroundColor: '#F9FAFB',
 input-fields ->  borderColor: '#E5E7EB',
 
 primary-bg-color -> #f68403
+blur colors -> #ffb76ab1
