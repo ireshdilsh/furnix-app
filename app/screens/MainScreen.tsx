@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Pressable } from 'react-native'
+import { View, Text, StyleSheet, Pressable, Image } from 'react-native'
 import React, { useEffect } from 'react'
 import { Fonts } from '@/config/Fonts';
 import { useFonts } from 'expo-font';
@@ -26,6 +26,7 @@ export default function MainScreen() {
         <View>
             <Header />
             <View style={styles.container}>
+                <Image style={styles.bgImg} source={require('../../assets/images/bg-img.png')} />
                 <Text style={styles.title}>Where Style{'\n'}Meets Comfort</Text>
                 <Text style={styles.description}>Create beautiful spaces with designs that feel as good as they look.</Text>
                 <Pressable style={styles.button}>
@@ -49,7 +50,7 @@ const styles = StyleSheet.create({
         fontFamily: 'Josefin-Bold',
         fontSize: 30,
         color: '#4a5565',
-        marginTop: 550,
+        marginTop: 580,
         textAlign: 'center'
     },
 
@@ -103,6 +104,15 @@ const styles = StyleSheet.create({
         right: 0,
         filter: 'blur(350px)',
         zIndex: 1,
+    },
+
+    bgImg: {
+        height: 300,
+        width: 320,
+        position: 'absolute',
+        top: 230,
+        left: 43,
+        zIndex: 0,
     }
 
 })
