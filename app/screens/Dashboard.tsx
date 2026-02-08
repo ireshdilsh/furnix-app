@@ -75,6 +75,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#F9FAFB',
         borderRadius: 10,
         position: 'relative',
+        boxShadow: 'rgba(141, 146, 151, 0.2) 0px 8px 24px',
     },
 
     container: {
