@@ -36,14 +36,14 @@ const styles = StyleSheet.create({
 
     title: {
         fontFamily: 'Josefin-Bold',
-        fontSize: 25,
+        fontSize: 32,
         color: '#4a5565',
-        marginTop: 50,
+        marginTop: 550,
     },
 
     description: {
         marginTop: 5,
         color: '#718096',
-        fontSize: 15
+        fontSize: 17
     }
 })
