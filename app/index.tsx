@@ -50,7 +50,7 @@ export default function index() {
                 }
             >
                 <LinearGradient
-                    colors={['#e17100', '#ff8904', '#ffb86a', '#ffedd4']}
+                    colors={['#3c4552', '#4a5565', '#718096', '#a0aec0']}
                     start={{ x: 0, y: 0 }}
                     end={{ x: 1, y: 1 }}
                     style={styles.gradient}
@@ -67,7 +67,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         marginVertical: 20,
-        // backgroundColor:'#ffedd4',
         height: '100%',
         width: '100%'
     },

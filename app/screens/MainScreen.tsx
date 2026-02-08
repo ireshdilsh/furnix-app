@@ -24,7 +24,7 @@ export default function MainScreen() {
 
     return (
         <View>
-            <Header />
+            {/* <Header /> */}
             <View style={styles.container}>
                 <Image style={styles.bgImg} source={require('../../assets/images/bg-img.png')} />
                 <Text style={styles.title}>Where Style{'\n'}Meets Comfort</Text>
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
     },
 
     button: {
-        backgroundColor: '#f68403',
+        backgroundColor: '#4a5565',
         paddingVertical: 12,
         paddingHorizontal: 25,
         borderRadius: 25,
@@ -90,19 +90,20 @@ const styles = StyleSheet.create({
     blur_1: {
         height: 200,
         width: 200,
-        backgroundColor: '#f68403',
+        backgroundColor: '#4a5565',
         position: 'absolute',
-        filter: 'blur(350px)',
+        filter: 'blur(200px)',
         zIndex: 1,
     },
 
     blur_2: {
         height: 200,
         width: 200,
-        backgroundColor: '#f68403',
+        backgroundColor: '#4a5565',
         position: 'absolute',
         right: 0,
-        filter: 'blur(350px)',
+        top:0,
+        filter: 'blur(200px)',
         zIndex: 1,
     },
 
