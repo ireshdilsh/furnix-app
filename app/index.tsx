@@ -56,7 +56,6 @@ export default function index() {
                     style={styles.gradient}
                 />
             </MaskedView>
-            <Text style={styles.appSubtitle}>Furniture</Text>
         </View>
     )
 }
@@ -89,11 +88,4 @@ const styles = StyleSheet.create({
         flex: 1,
     },
 
-    appSubtitle: {
-        fontFamily: 'Josefin-Bold',
-        fontSize: 17,
-        marginTop: -10,
-        color: '#718096',
-        marginLeft: 70
-    }
 })
