@@ -1,6 +1,7 @@
 import { Fonts } from '@/config/Fonts';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import { useFonts } from 'expo-font';
+import { useRouter } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import React, { useEffect, useState } from 'react';
 import { Image, Modal, Pressable, StyleSheet, Text, TouchableWithoutFeedback, View } from 'react-native';
@@ -9,6 +10,8 @@ SplashScreen.preventAutoHideAsync();
 
 export default function MainScreen() {
     const [isBottomSheetVisible, setIsBottomSheetVisible] = useState(false);
+
+    const router = useRouter();
 
     const [loaded, error] = useFonts({
         'Josefin': Fonts.Josefin,
@@ -21,6 +24,10 @@ export default function MainScreen() {
             SplashScreen.hideAsync();
         }
     }, [loaded, error]);
+
+    const gotoDashboard = () => {
+        router.replace('/screens/Dashboard')
+    }
 
     return (
         <View>
@@ -53,7 +60,7 @@ export default function MainScreen() {
                                     Log in or sign up to manage your profile and explore all features seamlessly.
                                 </Text>
 
-                                <Pressable style={styles.googleBtn}>
+                                <Pressable style={styles.googleBtn} onPress={gotoDashboard}>
                                     <Text style={styles.googleBtnText}>Continue With Google</Text>
                                     <AntDesign style={styles.googleIcn} name="google" size={18} color="white" />
                                 </Pressable>
@@ -229,8 +236,8 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     },
 
-    googleIcn:{
-        marginTop:5
+    googleIcn: {
+        marginTop: 5
     }
 
 })
