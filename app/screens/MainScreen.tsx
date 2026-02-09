@@ -26,7 +26,7 @@ export default function MainScreen() {
     }, [loaded, error]);
 
     const gotoDashboard = () => {
-        router.replace('/screens/Dashboard')
+        router.replace('/screens/Admin')
     }
 
     return (
