@@ -2,8 +2,16 @@ import { View, Text, StyleSheet, Pressable } from 'react-native'
 import React from 'react'
 import Header from '@/components/header'
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
+import { useRouter } from 'expo-router';
 
 export default function Admin() {
+
+    const router = useRouter();
+
+    const gotoAddChair = () => {
+        router.replace('/screens/AddChair')
+    }
+
     return (
         <View>
             <Header />
@@ -12,7 +20,7 @@ export default function Admin() {
                 <Text style={styles.description}>A centralized hub to manage operations,
                     track growth, and optimize your business.</Text>
 
-                <Pressable style={styles.addProductBtn}>
+                <Pressable style={styles.addProductBtn} onPress={gotoAddChair}>
                     <Text style={styles.addProductText}>Add New Chair</Text>
                     <FontAwesome6 name="add" size={16} color="#4a5565" />
                 </Pressable>
