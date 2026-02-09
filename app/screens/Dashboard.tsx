@@ -4,6 +4,7 @@ import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 
 import React from 'react';
 import { Image, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Fonts } from '../../config/Fonts';
 
 export default function Dashboard() {
     return (
@@ -88,11 +89,11 @@ const styles = StyleSheet.create({
 
     couponBtnText: {
         color: '#fff',
-        fontFamily: 'Josefin',
+        fontFamily: Fonts.Josefin,
     },
 
     couponTitle: {
-        fontFamily: 'Josefin-Bold',
+        fontFamily: Fonts.JosefinBold,
         fontSize: 15.5,
         color: '#4a5565',
     },
@@ -125,7 +126,7 @@ const styles = StyleSheet.create({
     },
 
     title: {
-        fontFamily: 'Josefin-Bold',
+        fontFamily: Fonts.JosefinBold,
         fontSize: 20,
         color: '#4a5565',
     },
@@ -197,7 +198,7 @@ const styles = StyleSheet.create({
     },
 
     productName: {
-        fontFamily: 'Josefin-Bold',
+        fontFamily: Fonts.JosefinBold,
         fontSize: 18,
         color: '#4a5565',
     },
@@ -216,7 +217,7 @@ const styles = StyleSheet.create({
     },
 
     productPrice: {
-        fontFamily: 'Josefin-Bold',
+        fontFamily: Fonts.JosefinBold,
         fontSize: 20,
         color: '#4a5565',
     },
@@ -230,7 +231,7 @@ const styles = StyleSheet.create({
 
     addToCartText: {
         color: '#fff',
-        fontFamily: 'Josefin',
+        fontFamily: Fonts.Josefin,
         fontSize: 14,
     },
 
