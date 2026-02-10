@@ -66,8 +66,8 @@ export default function GetChairByIDAdmin() {
 
             <View style={styles.container}>
                 {chair.image && (
-                    <Image 
-                        source={{ uri: chair.image }} 
+                    <Image
+                        source={{ uri: chair.image }}
                         style={styles.chairImage}
                         resizeMode="cover"
                     />
