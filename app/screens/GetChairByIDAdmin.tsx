@@ -63,6 +63,7 @@ export default function GetChairByIDAdmin() {
     return (
         <ScrollView style={styles.scrollView}>
             <Header />
+
             <View style={styles.container}>
                 {chair.image && (
                     <Image 
