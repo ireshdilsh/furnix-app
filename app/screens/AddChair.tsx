@@ -60,11 +60,13 @@ export default function AddChair() {
 
                     <View style={styles.form}>
                         <Text>Chair Name</Text>
-                        <TextInput style={styles.input} placeholder="Enter chair name" />
+                        <TextInput style={styles.input} onChangeText={setTitle} value={title} placeholder="Enter chair name" />
 
                         <Text style={{ marginTop: 15 }}>Chair Description</Text>
                         <TextInput
                             style={styles.textArea}
+                            onChangeText={setDescription}
+                            value={description}
                             placeholder="Enter chair description..."
                             multiline={true}
                             numberOfLines={50}
@@ -72,7 +74,7 @@ export default function AddChair() {
                         />
 
                         <Text style={{ marginTop: 15 }}>Chair Price</Text>
-                        <TextInput style={styles.input} placeholder="Enter chair price" keyboardType="numeric" />
+                        <TextInput style={styles.input} onChangeText={text => setprice(Number(text))} value={price.toString()} placeholder="Enter chair price" keyboardType="numeric" />
 
                         <Text style={{ marginTop: 15 }}>Chair Image</Text>
                         <Pressable onPress={pickImage} style={styles.imagePicker}>
