@@ -54,8 +54,9 @@ export default function AddChair() {
             const resp = await addNewChair({ title, description, price: Number(price), image: image || '' });
             if (resp) {
                 console.log('New chair added with ID: ', (resp as any).id);
+                clearFields();
                 Alert.alert('Success', 'New chair added successfully!');
-            }else{
+            } else {
                 console.log('something went wrong');
             }
         } catch (error) {
@@ -64,6 +65,12 @@ export default function AddChair() {
         }
     }
 
+    const clearFields = () => {
+        setTitle('');
+        setDescription('');
+        setprice(0);
+        setImage(null);
+    }
 
     return (
         <View style={{ flex: 1 }}>
