@@ -3,7 +3,7 @@ import { getAllChairs } from '@/service/ChairService';
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 import { useRouter } from 'expo-router';
 import React, { useEffect, useRef, useState } from 'react';
-import { Animated, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Animated, Image, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 interface Chair {
     id: string;
@@ -21,6 +21,13 @@ export default function Admin() {
 
     const gotoAddChair = () => {
         router.replace('/screens/AddChair')
+    }
+
+    const gotoChairByID = (id: string) => {
+        router.push({
+            pathname: '/screens/GetChairByIDAdmin',
+            params: { id }
+        })
     }
 
     useEffect(() => {
@@ -100,11 +107,12 @@ export default function Admin() {
                         </>
                     ) : chairs.length > 0 ? (
                         chairs.map((chair) => (
-                            <View key={chair.id} style={styles.chairCard}>
+                            <Pressable onPress={()=>gotoChairByID(chair.id)} key={chair.id} style={styles.chairCard}>
                                 <Text style={styles.chairTitle}>{chair.title}</Text>
+                                <Image source={{ uri: chair.image }} style={styles.chairCardImage} />
                                 <Text style={styles.chairDescription}>{chair.description}</Text>
                                 <Text style={styles.chairPrice}>${chair.price}</Text>
-                            </View>
+                            </Pressable>
                         ))
                     ) : (
                         <Text style={styles.emptyText}>No chairs available</Text>
@@ -121,6 +129,13 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
     },
 
+    chairCardImage: {
+        width: '100%', 
+        height: 150, 
+        borderRadius: 10, 
+        marginBottom: 15 
+    },
+
     addProductText: {
         fontSize: 16,
         color: '#4a5565',
@@ -133,7 +148,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         gap: 15,
-        marginTop: 20,
+        marginTop: 40,
         borderColor: '#4a5565',
         borderWidth: 0.5,
         paddingVertical: 10,
@@ -142,7 +157,7 @@ const styles = StyleSheet.create({
 
     container: {
         paddingHorizontal: 30,
-        marginTop: 70,
+        marginTop: 90,
         paddingBottom: 40,
     },
     title: {
@@ -158,7 +173,7 @@ const styles = StyleSheet.create({
 
     // Chair cards styles
     chairsContainer: {
-        marginTop: 30,
+        marginTop: 40,
         gap: 15,
     },
 

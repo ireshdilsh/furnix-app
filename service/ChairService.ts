@@ -2,7 +2,7 @@ import { collection, addDoc, getDocs, getDoc, doc, updateDoc, deleteDoc } from "
 import { db } from "../config/config";
 // const auth = getAuth()
 
-const tasksCollection = collection(db, 'tasks')
+const tasksCollection = collection(db, 'chairs')
 
 export const addNewChair = async (chairData: { title: string; description: string; price: number; image: string }) => {
     try {
