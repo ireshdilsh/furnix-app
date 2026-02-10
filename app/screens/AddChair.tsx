@@ -13,6 +13,9 @@ export default function AddChair() {
         router.replace('/screens/Admin')
     }
 
+    const [title, setTitle] = useState<string>('');
+    const [description, setDescription] = useState<string>('');
+    const [price, setprice] = useState<Number>(0);
     const [image, setImage] = useState<string | null>(null);
 
     const pickImage = async () => {
@@ -47,42 +50,42 @@ export default function AddChair() {
         <View style={{ flex: 1 }}>
             <Header />
             <ScrollView style={styles.scrollView} contentContainerStyle={styles.scrollContent}>
-            <View style={styles.container}>
-                <Pressable onPress={gotoDashboard}>
-                    <Ionicons name="arrow-back-circle" size={25} color="#4a5565" />
-                </Pressable>
-                <Text style={styles.title}>Add New Chair to Inventory</Text>
-                <Text style={styles.description}>Easily add new chair products
-                    to your inventory with this simple form.</Text>
-
-                <View style={styles.form}>
-                    <Text>Chair Name</Text>
-                    <TextInput style={styles.input} placeholder="Enter chair name" />
-
-                    <Text style={{ marginTop: 15 }}>Chair Description</Text>
-                    <TextInput
-                        style={styles.textArea}
-                        placeholder="Enter chair description..."
-                        multiline={true}
-                        numberOfLines={50}
-                        textAlignVertical="top" // Android fix
-                    />
-
-                    <Text style={{ marginTop: 15 }}>Chair Price</Text>
-                    <TextInput style={styles.input} placeholder="Enter chair price" keyboardType="numeric" />
-
-                    <Text style={{ marginTop: 15 }}>Chair Image</Text>
-                    <Pressable onPress={pickImage} style={styles.imagePicker}>
-                        <Text style={styles.imagePickerText}>Pick an image</Text>
+                <View style={styles.container}>
+                    <Pressable onPress={gotoDashboard}>
+                        <Ionicons name="arrow-back-circle" size={25} color="#4a5565" />
                     </Pressable>
-                    {image && <Image source={{ uri: image }} style={styles.image} />}
-                  
-                    <TouchableOpacity style={styles.button}>
-                        <Text style={styles.buttonText}>Add New Chair</Text>
-                    </TouchableOpacity>
-                </View>
+                    <Text style={styles.title}>Add New Chair to Inventory</Text>
+                    <Text style={styles.description}>Easily add new chair products
+                        to your inventory with this simple form.</Text>
 
-            </View>
+                    <View style={styles.form}>
+                        <Text>Chair Name</Text>
+                        <TextInput style={styles.input} placeholder="Enter chair name" />
+
+                        <Text style={{ marginTop: 15 }}>Chair Description</Text>
+                        <TextInput
+                            style={styles.textArea}
+                            placeholder="Enter chair description..."
+                            multiline={true}
+                            numberOfLines={50}
+                            textAlignVertical="top" // Android fix
+                        />
+
+                        <Text style={{ marginTop: 15 }}>Chair Price</Text>
+                        <TextInput style={styles.input} placeholder="Enter chair price" keyboardType="numeric" />
+
+                        <Text style={{ marginTop: 15 }}>Chair Image</Text>
+                        <Pressable onPress={pickImage} style={styles.imagePicker}>
+                            <Text style={styles.imagePickerText}>Pick an image</Text>
+                        </Pressable>
+                        {image && <Image source={{ uri: image }} style={styles.image} />}
+
+                        <TouchableOpacity style={styles.button}>
+                            <Text style={styles.buttonText}>Add New Chair</Text>
+                        </TouchableOpacity>
+                    </View>
+
+                </View>
             </ScrollView>
         </View>
     )
@@ -90,19 +93,19 @@ export default function AddChair() {
 
 const styles = StyleSheet.create({
 
-    button:{
-        backgroundColor:'#4a5565',
-        width:'100%',
-        height:48,
-        marginTop:30,
-        borderRadius:25,
-        justifyContent:'center',
-        alignItems:'center'
+    button: {
+        backgroundColor: '#4a5565',
+        width: '100%',
+        height: 48,
+        marginTop: 30,
+        borderRadius: 25,
+        justifyContent: 'center',
+        alignItems: 'center'
     },
 
-    buttonText:{
-        color:'#fff',
-        fontSize:16,
+    buttonText: {
+        color: '#fff',
+        fontSize: 16,
         fontFamily: 'Josefin-Bold',
         textAlign: 'center',
         lineHeight: 48
