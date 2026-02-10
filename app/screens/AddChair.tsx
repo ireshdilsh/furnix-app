@@ -3,7 +3,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import * as ImagePicker from 'expo-image-picker';
 import { useRouter } from 'expo-router';
 import React, { useState } from 'react';
-import { Alert, Image, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Alert, Image, Pressable, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
 export default function AddChair() {
 
@@ -44,8 +44,9 @@ export default function AddChair() {
 
 
     return (
-        <View>
+        <View style={{ flex: 1 }}>
             <Header />
+            <ScrollView style={styles.scrollView} contentContainerStyle={styles.scrollContent}>
             <View style={styles.container}>
                 <Pressable onPress={gotoDashboard}>
                     <Ionicons name="arrow-back-circle" size={25} color="#4a5565" />
@@ -75,20 +76,44 @@ export default function AddChair() {
                         <Text style={styles.imagePickerText}>Pick an image</Text>
                     </Pressable>
                     {image && <Image source={{ uri: image }} style={styles.image} />}
-
+                  
+                    <TouchableOpacity style={styles.button}>
+                        <Text style={styles.buttonText}>Add New Chair</Text>
+                    </TouchableOpacity>
                 </View>
 
             </View>
+            </ScrollView>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
 
+    button:{
+        backgroundColor:'#4a5565',
+        width:'100%',
+        height:48,
+        marginTop:30,
+        borderRadius:25,
+        justifyContent:'center',
+        alignItems:'center'
+    },
+
+    buttonText:{
+        color:'#fff',
+        fontSize:16,
+        fontFamily: 'Josefin-Bold',
+        textAlign: 'center',
+        lineHeight: 48
+    },
+
     imagePicker: {
         width: '100%',
-        height: 48,
-        backgroundColor: '#F9FAFB',
+        height: 150,
+        borderStyle: 'dashed',
+        borderWidth: 1,
+        borderColor: '#4a5565',
         borderRadius: 25,
         justifyContent: 'center',
         alignItems: 'center',
@@ -97,7 +122,8 @@ const styles = StyleSheet.create({
 
     imagePickerText: {
         color: '#4a5565',
-        fontSize: 16
+        fontSize: 16,
+        fontFamily: 'Josefin-Bold'
     },
 
     image: {
@@ -105,7 +131,7 @@ const styles = StyleSheet.create({
         height: 200,
         borderRadius: 25,
         marginTop: 8
-    },  
+    },
 
     form: {
         marginTop: 40
@@ -145,5 +171,13 @@ const styles = StyleSheet.create({
     container: {
         paddingHorizontal: 30,
         marginTop: 70,
+    },
+
+    scrollView: {
+        flex: 1,
+    },
+
+    scrollContent: {
+        paddingBottom: 240,
     },
 })
