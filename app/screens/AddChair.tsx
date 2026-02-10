@@ -16,7 +16,7 @@ export default function AddChair() {
 
     const [title, setTitle] = useState<string>('');
     const [description, setDescription] = useState<string>('');
-    const [price, setprice] = useState<Number>(0);
+    const [price, setprice] = useState<number>(0);
     const [image, setImage] = useState<string | null>(null);
 
     const pickImage = async () => {
@@ -40,11 +40,13 @@ export default function AddChair() {
         });
 
         console.log(result);
-        // console.log(result.assets?.length);
-        console.log('image is -> ', image);
 
         if (!result.canceled) {
-            setImage(result.assets[0].uri);
+            const imageUri = result.assets[0].uri;
+            console.log('Selected image URI -> ', imageUri);
+            setImage(imageUri);
+        } else {
+            console.log('Image selection canceled');
         }
     };
 
