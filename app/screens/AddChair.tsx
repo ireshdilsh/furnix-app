@@ -1,4 +1,5 @@
 import Header from '@/components/header';
+import { addNewChair } from '@/service/ChairService';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import * as ImagePicker from 'expo-image-picker';
 import { useRouter } from 'expo-router';
@@ -39,11 +40,29 @@ export default function AddChair() {
         });
 
         console.log(result);
+        // console.log(result.assets?.length);
+        console.log('image is -> ', image);
 
         if (!result.canceled) {
             setImage(result.assets[0].uri);
         }
     };
+
+    const postNewChair = async () => {
+        try {
+            // Add your logic to post the new chair here
+            const resp = await addNewChair({ title, description, price: Number(price), image: image || '' });
+            if (resp) {
+                console.log('New chair added with ID: ', (resp as any).id);
+                Alert.alert('Success', 'New chair added successfully!');
+            }else{
+                console.log('something went wrong');
+            }
+        } catch (error) {
+            console.error('Error posting new chair:', error);
+            Alert.alert('Error', 'An error occurred while adding the chair. Please try again.');
+        }
+    }
 
 
     return (
@@ -82,7 +101,7 @@ export default function AddChair() {
                         </Pressable>
                         {image && <Image source={{ uri: image }} style={styles.image} />}
 
-                        <TouchableOpacity style={styles.button}>
+                        <TouchableOpacity style={styles.button} onPress={postNewChair}>
                             <Text style={styles.buttonText}>Add New Chair</Text>
                         </TouchableOpacity>
                     </View>
