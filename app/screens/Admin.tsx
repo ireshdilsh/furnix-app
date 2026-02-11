@@ -30,6 +30,7 @@ export default function Admin() {
         })
     }
 
+    // Load All Chairs on component mount
     useEffect(() => {
         const fetchChairs = async () => {
             setLoading(true);
@@ -107,7 +108,7 @@ export default function Admin() {
                         </>
                     ) : chairs.length > 0 ? (
                         chairs.map((chair) => (
-                            <Pressable onPress={()=>gotoChairByID(chair.id)} key={chair.id} style={styles.chairCard}>
+                            <Pressable onPress={() => gotoChairByID(chair.id)} key={chair.id} style={styles.chairCard}>
                                 <Text style={styles.chairTitle}>{chair.title}</Text>
                                 <Image source={{ uri: chair.image }} style={styles.chairCardImage} />
                                 <Text style={styles.chairDescription}>{chair.description}</Text>
@@ -130,10 +131,10 @@ const styles = StyleSheet.create({
     },
 
     chairCardImage: {
-        width: '100%', 
-        height: 150, 
-        borderRadius: 10, 
-        marginBottom: 15 
+        width: '100%',
+        height: 150,
+        borderRadius: 10,
+        marginBottom: 15
     },
 
     addProductText: {
