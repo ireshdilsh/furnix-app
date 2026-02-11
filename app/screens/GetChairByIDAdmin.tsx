@@ -64,6 +64,9 @@ export default function GetChairByIDAdmin() {
         <ScrollView style={styles.scrollView}>
             <Header />
 
+            <Text></Text>
+            <Text></Text>
+
             <View style={styles.container}>
                 {chair.image && (
                     <Image
@@ -84,6 +87,20 @@ const styles = StyleSheet.create({
     scrollView: {
         flex: 1,
         backgroundColor: '#fff',
+    },
+
+    title: {
+        fontSize: 28,
+        fontFamily: 'Josefin-Bold',
+        color: '#4a5565',
+        marginTop: 25
+    },
+
+    description: {
+        color: '#718096',
+        fontSize: 16,
+        lineHeight: 24,
+        marginTop: 15
     },
 
     centerContainer: {
