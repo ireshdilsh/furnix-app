@@ -64,8 +64,8 @@ export default function GetChairByIDAdmin() {
         <ScrollView style={styles.scrollView}>
             <Header />
 
-            <Text></Text>
-            <Text></Text>
+            <Text style={styles.title}>Product Overview</Text>
+            <Text style={styles.description}>Explore detailed specifications and pricing for this selected chair.</Text>
 
             <View style={styles.container}>
                 {chair.image && (
@@ -98,8 +98,8 @@ const styles = StyleSheet.create({
 
     description: {
         color: '#718096',
-        fontSize: 16,
-        lineHeight: 24,
+        // fontSize: 16,
+        // lineHeight: 24,
         marginTop: 15
     },
 
