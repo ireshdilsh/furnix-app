@@ -1,11 +1,73 @@
 import Header from '@/components/header';
+import { Chair } from '@/interfaces/Chair';
+import { getAllChairs } from '@/service/ChairService';
 import EvilIcons from '@expo/vector-icons/EvilIcons';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import { useRouter } from 'expo-router';
 
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Image, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 
 export default function Dashboard() {
+
+    const router = useRouter();
+    const [chairs, setChairs] = useState<Chair[]>([]);
+    const [loading, setLoading] = useState(true);
+
+    // Load All Chairs on component mount
+    useEffect(() => {
+        const fetchChairs = async () => {
+            setLoading(true);
+            try {
+                const chairsData = await getAllChairs();
+                setChairs(chairsData as Chair[]);
+            } catch (error) {
+                console.error('Error fetching chairs:', error);
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchChairs();
+    }, []);
+
+    // Skeleton Loader Component
+    const SkeletonCard = () => {
+        const shimmerAnim = useRef(new Animated.Value(0)).current;
+
+        useEffect(() => {
+            Animated.loop(
+                Animated.sequence([
+                    Animated.timing(shimmerAnim, {
+                        toValue: 1,
+                        duration: 1000,
+                        useNativeDriver: true,
+                    }),
+                    Animated.timing(shimmerAnim, {
+                        toValue: 0,
+                        duration: 1000,
+                        useNativeDriver: true,
+                    }),
+                ])
+            ).start();
+        }, []);
+
+        const opacity = shimmerAnim.interpolate({
+            inputRange: [0, 1],
+            outputRange: [0.3, 0.7],
+        });
+
+        return (
+            <Animated.View style={[styles.skeletonCard, { opacity }]}>
+                <View style={styles.skeletonImage} />
+                <View style={styles.skeletonContent}>
+                    <View style={styles.skeletonTitle} />
+                    <View style={styles.skeletonDescription} />
+                    <View style={styles.skeletonPrice} />
+                </View>
+            </Animated.View>
+        );
+    };
+
     return (
         <View>
             <Header />
