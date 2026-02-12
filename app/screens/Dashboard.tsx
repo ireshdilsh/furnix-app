@@ -158,6 +158,13 @@ export default function Dashboard() {
 
 const styles = StyleSheet.create({
 
+    chairCardImage: {
+        width: '100%',
+        height: 150,
+        borderRadius: 10,
+        marginBottom: 15
+    },
+
     emptyText: {
         textAlign: 'center',
         color: '#718096',
