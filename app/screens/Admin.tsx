@@ -4,14 +4,15 @@ import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 import { useRouter } from 'expo-router';
 import React, { useEffect, useRef, useState } from 'react';
 import { Animated, Image, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Chair } from '../../interfaces/Chair';
 
-interface Chair {
-    id: string;
-    title: string;
-    description: string;
-    price: number;
-    image: string;
-}
+// interface Chair {
+//     id: string;
+//     title: string;
+//     description: string;
+//     price: number;
+//     image: string;
+// }
 
 export default function Admin() {
 
