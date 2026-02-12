@@ -14,6 +14,13 @@ export default function Dashboard() {
     const [chairs, setChairs] = useState<Chair[]>([]);
     const [loading, setLoading] = useState(true);
 
+    const gotoChairByID = (id: string) => {
+        router.push({
+            pathname: '/screens/GetChairByIDAdmin',
+            params: { id }
+        })
+    }
+
     // Load All Chairs on component mount
     useEffect(() => {
         const fetchChairs = async () => {
@@ -151,7 +158,45 @@ export default function Dashboard() {
 
 const styles = StyleSheet.create({
 
-    // Skeleton loader styles
+    emptyText: {
+        textAlign: 'center',
+        color: '#718096',
+        marginTop: 20,
+        fontSize: 16,
+    },
+
+    chairsContainer: {
+        marginTop: 40,
+        gap: 15,
+    },
+
+    chairCard: {
+        backgroundColor: '#f7fafc',
+        borderRadius: 15,
+        padding: 20,
+        borderWidth: 0.5,
+        borderColor: '#e2e8f0',
+    },
+
+    chairTitle: {
+        fontSize: 18,
+        fontFamily: 'Josefin-Bold',
+        color: '#4a5565',
+        marginBottom: 8,
+    },
+
+    chairDescription: {
+        color: '#718096',
+        marginBottom: 12,
+        lineHeight: 20,
+    },
+
+    chairPrice: {
+        fontSize: 20,
+        fontFamily: 'Josefin-Bold',
+        color: '#4a5565',
+    },
+
     skeletonCard: {
         backgroundColor: '#f7fafc',
         borderRadius: 15,
