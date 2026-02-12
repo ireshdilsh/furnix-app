@@ -6,7 +6,7 @@ import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { useRouter } from 'expo-router';
 
 import React, { useEffect, useRef, useState } from 'react';
-import { Image, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Animated, Image, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 
 export default function Dashboard() {
 
@@ -121,7 +121,27 @@ export default function Dashboard() {
                         </View>
                     </View>
 
-
+                    <View style={styles.chairsContainer}>
+                        {loading ? (
+                            // Show skeleton loaders while loading
+                            <>
+                                <SkeletonCard />
+                                <SkeletonCard />
+                                <SkeletonCard />
+                            </>
+                        ) : chairs.length > 0 ? (
+                            chairs.map((chair) => (
+                                <Pressable onPress={() => gotoChairByID(chair.id)} key={chair.id} style={styles.chairCard}>
+                                    <Text style={styles.chairTitle}>{chair.title}</Text>
+                                    <Image source={{ uri: chair.image }} style={styles.chairCardImage} />
+                                    <Text style={styles.chairDescription}>{chair.description}</Text>
+                                    <Text style={styles.chairPrice}>${chair.price}</Text>
+                                </Pressable>
+                            ))
+                        ) : (
+                            <Text style={styles.emptyText}>No chairs available</Text>
+                        )}
+                    </View>
 
                 </ScrollView>
             </View>
@@ -130,6 +150,50 @@ export default function Dashboard() {
 }
 
 const styles = StyleSheet.create({
+
+    // Skeleton loader styles
+    skeletonCard: {
+        backgroundColor: '#f7fafc',
+        borderRadius: 15,
+        padding: 20,
+        borderWidth: 0.5,
+        borderColor: '#e2e8f0',
+        marginBottom: 15,
+    },
+
+    skeletonImage: {
+        width: '100%',
+        height: 120,
+        backgroundColor: '#e2e8f0',
+        borderRadius: 10,
+        marginBottom: 15,
+    },
+
+    skeletonContent: {
+        gap: 10,
+    },
+
+    skeletonTitle: {
+        width: '60%',
+        height: 20,
+        backgroundColor: '#e2e8f0',
+        borderRadius: 5,
+    },
+
+    skeletonDescription: {
+        width: '90%',
+        height: 16,
+        backgroundColor: '#e2e8f0',
+        borderRadius: 5,
+    },
+
+    skeletonPrice: {
+        width: '30%',
+        height: 24,
+        backgroundColor: '#e2e8f0',
+        borderRadius: 5,
+        marginTop: 5,
+    },
 
     couponImg: {
         height: 65,
