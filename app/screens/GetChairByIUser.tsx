@@ -7,7 +7,7 @@ export default function GetChairByIUser() {
     <View>
       <Header />
       <View style={styles.container}>
-
+        <Text>This is get shair by user id page for user</Text>
       </View>
     </View>
   )
