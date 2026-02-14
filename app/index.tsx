@@ -1,12 +1,12 @@
-import { BorderRadius, Colors } from '@/constants/theme';
+import { Colors } from '@/constants/theme';
 import { useFonts } from '@expo-google-fonts/poppins';
+import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 import MaskedView from '@react-native-masked-view/masked-view';
 import { LinearGradient } from 'expo-linear-gradient';
+import { useRouter } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import React, { useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
-import { useRouter } from 'expo-router';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -17,11 +17,10 @@ export default function index() {
 
     // eslint-disable-next-line react-hooks/rules-of-hooks
     useEffect(() => {
-
         setTimeout(() => {
-            router.replace('/Mainscreen')
+            router.replace('/(auth)/Login' as any)
         }, 3500);
-    });
+    }, [router]);
 
 
     // eslint-disable-next-line react-hooks/rules-of-hooks

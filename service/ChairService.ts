@@ -1,5 +1,6 @@
-import { collection, addDoc, getDocs, getDoc, doc, updateDoc, deleteDoc } from "firebase/firestore";
+import { addDoc, collection, deleteDoc, doc, getDoc, getDocs, updateDoc } from "firebase/firestore";
 import { db } from "../config/config";
+import { Chair } from "../interfaces/Chair";
 // const auth = getAuth()
 
 const tasksCollection = collection(db, 'chairs')
@@ -12,28 +13,28 @@ export const addNewChair = async (chairData: { title: string; description: strin
     }
 }
 
-export const getAllChairs = async () => {
+export const getAllChairs = async (): Promise<Chair[]> => {
     try {
         const querySnapshot = await getDocs(tasksCollection);
         const chairs = querySnapshot.docs.map(doc => ({
             id: doc.id,
             ...doc.data()
-        }));
+        })) as Chair[];
         return chairs;
     } catch (error) {
         throw error;
     }
 }
 
-export const getChairByID = async (id: string) => {
+export const getChairByID = async (id: string): Promise<Chair | null> => {
     try {
         const docRef = doc(tasksCollection, id);
         const docSnap = await getDoc(docRef);
 
         if (docSnap.exists()) {
-            return { id: docSnap.id, ...docSnap.data() };
+            return { id: docSnap.id, ...docSnap.data() } as Chair;
         } else {
-            throw new Error("No such chair found!");
+            return null;
         }
     } catch (error) {
         console.error("Error getting chair: ", error);
