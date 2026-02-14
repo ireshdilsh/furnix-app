@@ -10,11 +10,6 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 
 export default function Mainscreen() {
     const [isBottomSheetVisible, setIsBottomSheetVisible] = useState(false);
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
-    const [agreeTerms, setAgreeTerms] = useState(false);
 
     const handleGetStarted = () => {
         setIsBottomSheetVisible(true);
@@ -22,10 +17,6 @@ export default function Mainscreen() {
 
     const handleCloseBottomSheet = () => {
         setIsBottomSheetVisible(false);
-    };
-
-    const handleCreateAccount = () => {
-        console.log({ name, email, password, confirmPassword, agreeTerms });
     };
 
     const handleSignIn = () => {
@@ -75,7 +66,7 @@ export default function Mainscreen() {
                         Sign up to unlock exclusive deals, save your style, and manage your orders easily.
                     </Text>
 
-                    <TouchableOpacity style={styles.googleBtn}>
+                    <TouchableOpacity style={styles.googleBtn} onPress={handleSignIn}>
                         <Text style={styles.googleBtnText}>Continue with Google</Text>
                         <AntDesign name="google" size={20} color="#fff" />
                     </TouchableOpacity>
@@ -93,7 +84,7 @@ export default function Mainscreen() {
 const styles = StyleSheet.create({
 
     mobileBtn: {
-        backgroundColor: Colors.primary,
+        backgroundColor: '#333',
         paddingVertical: 13,
         borderRadius: BorderRadius.sm,
         flexDirection: 'row',
