@@ -16,11 +16,11 @@ export default function index() {
     const router = useRouter();
 
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    useEffect(() => {
-        setTimeout(() => {
-            router.replace('/(auth)/Login' as any)
-        }, 3500);
-    }, [router]);
+    // useEffect(() => {
+    //     setTimeout(() => {
+    //         router.replace('/screens/Signin')
+    //     }, 3500);
+    // }, [router]);
 
 
     // eslint-disable-next-line react-hooks/rules-of-hooks
