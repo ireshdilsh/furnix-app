@@ -11,7 +11,7 @@ import { Platform } from 'react-native';
 
 export const Colors = {
   // Primary Brand Colors
-  primary: '#6C5CE7',         // Soft Purple
+  primary: '#155dfc',         // Soft Purple
   primaryLight: '#A29BFE',    // Light Purple
   secondary: '#A29BFE',       // Secondary Purple
   accent: '#FF7675',          // Coral for CTA
@@ -43,7 +43,7 @@ export const Colors = {
   // Gradient Colors
   gradientPurple: ['#6C5CE7', '#A29BFE'] as const,
   gradientCoral: ['#FF7675', '#FFB4A2'] as const,
-  gradientPurpleCoral: ['#6C5CE7', '#FF7675'] as const,
+  gradientPurpleCoral: ['#2b7fff', '#74d4ff'] as const,
   gradientDark: ['#1C1C2E', '#0F0F1A'] as const,
   gradientGlow: ['rgba(108, 92, 231, 0.4)', 'rgba(108, 92, 231, 0)'] as const,
 
