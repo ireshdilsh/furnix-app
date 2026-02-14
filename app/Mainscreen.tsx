@@ -1,13 +1,12 @@
 import BottomSheet from '@/components/ui/BottomSheet';
-import Input from '@/components/ui/Input';
 import { BorderRadius, Colors } from '@/constants/theme';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import MaskedView from '@react-native-masked-view/masked-view';
-import Checkbox from 'expo-checkbox';
 import { LinearGradient } from 'expo-linear-gradient';
 import React, { useState } from 'react';
-import { Pressable, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Pressable, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 export default function Mainscreen() {
     const [isBottomSheetVisible, setIsBottomSheetVisible] = useState(false);
@@ -70,7 +69,7 @@ export default function Mainscreen() {
                 onClose={handleCloseBottomSheet}
                 snapPoints={[0.35]}
             >
-                <View style={{paddingHorizontal: 20}}>
+                <View style={{ paddingHorizontal: 20 }}>
                     <Text style={styles.bottomSheetTitle}>Let’s Get You Started</Text>
                     <Text style={styles.bottomSheetDescription}>
                         Sign up to unlock exclusive deals, save your style, and manage your orders easily.
@@ -82,8 +81,8 @@ export default function Mainscreen() {
                     </TouchableOpacity>
 
                     <TouchableOpacity style={styles.mobileBtn}>
-                        <Text style={styles.mobileBtnText}>Continue with Mobile No</Text>
-                        <AntDesign name="google" size={20} color="#fff" />
+                        <Text style={styles.mobileBtnText}>Continue with Mobile Number</Text>
+                        <Ionicons name="call" size={18} color="#fff" />
                     </TouchableOpacity>
                 </View>
             </BottomSheet>
@@ -92,6 +91,25 @@ export default function Mainscreen() {
 }
 
 const styles = StyleSheet.create({
+
+    mobileBtn: {
+        backgroundColor: Colors.primary,
+        paddingVertical: 13,
+        borderRadius: BorderRadius.sm,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        gap: 10,
+        marginTop: 15,
+    },
+
+    mobileBtnText: {
+        color: '#fff',
+        fontSize: 16,
+        fontWeight: '500',
+        fontFamily: 'Robotslab',
+        textAlign: 'center'
+    },
 
     container: {
         flex: 1,
@@ -121,7 +139,7 @@ const styles = StyleSheet.create({
 
     getStartedButton: {
         backgroundColor: Colors.primary,
-        paddingVertical: 12,
+        paddingVertical: 13,
         paddingHorizontal: 30,
         borderRadius: BorderRadius.sm,
         marginTop: 30,
@@ -171,6 +189,6 @@ const styles = StyleSheet.create({
         fontFamily: 'Robotslab',
     },
 
-    
+
 
 })
