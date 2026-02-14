@@ -7,8 +7,12 @@ import React, { useState } from 'react';
 import { Pressable, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import Ionicons from '@expo/vector-icons/Ionicons';
+import { useRouter } from 'expo-router';
 
 export default function Mainscreen() {
+
+    const router = useRouter();
+
     const [isBottomSheetVisible, setIsBottomSheetVisible] = useState(false);
 
     const handleGetStarted = () => {
@@ -22,6 +26,10 @@ export default function Mainscreen() {
     const handleSignIn = () => {
         console.log('Navigate to sign in');
     };
+
+    const gotoAgreementsScreen = () => {
+        router.push('/TermsadCondition');
+    }
 
     return (
         <GestureHandlerRootView style={{ flex: 1 }}>
@@ -58,7 +66,7 @@ export default function Mainscreen() {
             <BottomSheet
                 isVisible={isBottomSheetVisible}
                 onClose={handleCloseBottomSheet}
-                snapPoints={[0.35]}
+                snapPoints={[0.43]}
             >
                 <View style={{ paddingHorizontal: 20 }}>
                     <Text style={styles.bottomSheetTitle}>Let’s Get You Started</Text>
@@ -76,12 +84,26 @@ export default function Mainscreen() {
                         <Ionicons name="call" size={18} color="#fff" />
                     </TouchableOpacity>
                 </View>
+                <Text style={styles.termsText}>I have read and agree to the Terms and Conditions and Privacy Policy. <Text onPress={gotoAgreementsScreen} style={styles.readMoreText}>read more</Text></Text>
             </BottomSheet>
         </GestureHandlerRootView>
     )
 }
 
 const styles = StyleSheet.create({
+
+    termsText:{
+        fontSize: 13,
+        color: Colors.textSecondary,
+        textAlign: 'center',
+        marginTop: 15,
+    },
+
+    readMoreText: {
+        color: Colors.primary,
+        textDecorationLine: 'underline',
+        fontWeight: '500',
+    },
 
     mobileBtn: {
         backgroundColor: '#333',
@@ -91,7 +113,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         gap: 10,
-        marginTop: 15,
+        marginTop: 10,
     },
 
     mobileBtnText: {
@@ -166,7 +188,7 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.primary,
         paddingVertical: 13,
         borderRadius: BorderRadius.sm,
-        marginTop: 40,
+        marginTop: 25,
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',

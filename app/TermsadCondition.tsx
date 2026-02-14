@@ -1,6 +1,7 @@
 import { BorderRadius } from '@/constants/theme'
 import { Ionicons } from '@expo/vector-icons'
 import { LinearGradient } from 'expo-linear-gradient'
+import { useRouter } from 'expo-router'
 import React, { useState } from 'react'
 import { ScrollView, StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
@@ -41,7 +42,12 @@ const TermsSection = ({ title, content, index }: TermsSectionProps) => {
 };
 
 export default function TermsadCondition() {
-    const [accepted, setAccepted] = useState(false);
+
+    const router = useRouter();
+
+    const gotoBack = () => {
+        router.back();
+    }
 
     const termsData = [
         {
@@ -80,11 +86,11 @@ export default function TermsadCondition() {
 
     return (
         <SafeAreaView style={styles.container}>
-            <StatusBar barStyle="dark-content" backgroundColor="#F8F9FF" />
+            <StatusBar barStyle="dark-content" backgroundColor="#fff" />
 
             {/* Header */}
             <View style={styles.header}>
-                <TouchableOpacity style={styles.backButton}>
+                <TouchableOpacity style={styles.backButton} onPress={gotoBack}>
                     <Ionicons name="arrow-back" size={24} color="#4a5565" />
                 </TouchableOpacity>
                 <Text style={styles.headerTitle}>Terms & Conditions</Text>
@@ -93,7 +99,7 @@ export default function TermsadCondition() {
 
             {/* Hero Section */}
             <LinearGradient
-                colors={['#ffb76ab1', '#f68403']}
+                colors={['#2b7fff', '#74d4ff']}
                 start={{ x: 0, y: 0 }}
                 end={{ x: 1, y: 1 }}
                 style={styles.heroSection}
@@ -129,36 +135,11 @@ export default function TermsadCondition() {
 
                 {/* Contact Section */}
                 <View style={styles.contactCard}>
-                    <Ionicons name="help-circle-outline" size={28} color="#f68403" />
+                    <Ionicons name="help-circle-outline" size={28} color="#74d4ff" />
                     <Text style={styles.contactTitle}>Have Questions?</Text>
                     <Text style={styles.contactText}>
                         Contact our support team at support@furnix.com
                     </Text>
-                </View>
-
-                {/* Accept Section */}
-                <View style={styles.acceptSection}>
-                    <TouchableOpacity
-                        style={styles.checkboxContainer}
-                        onPress={() => setAccepted(!accepted)}
-                        activeOpacity={0.7}
-                    >
-                        <View style={[styles.checkbox, accepted && styles.checkboxChecked]}>
-                            {accepted && <Ionicons name="checkmark" size={16} color="#fff" />}
-                        </View>
-                        <Text style={styles.checkboxLabel}>
-                            I have read and agree to the Terms and Conditions
-                        </Text>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity
-                        style={[styles.acceptButton, !accepted && styles.acceptButtonDisabled]}
-                        disabled={!accepted}
-                        activeOpacity={0.8}
-                    >
-                        <Text style={styles.acceptButtonText}>Accept & Continue</Text>
-                        <Ionicons name="arrow-forward" size={18} color="#fff" />
-                    </TouchableOpacity>
                 </View>
 
                 <View style={styles.bottomPadding} />
@@ -170,7 +151,7 @@ export default function TermsadCondition() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#F8F9FF',
+        backgroundColor: '#fff',
     },
 
     header: {
@@ -283,7 +264,7 @@ const styles = StyleSheet.create({
         width: 28,
         height: 28,
         borderRadius: 14,
-        backgroundColor: '#ffb76ab1',
+        backgroundColor: '#74d3ffdc',
         justifyContent: 'center',
         alignItems: 'center',
         marginRight: 12,
@@ -317,14 +298,14 @@ const styles = StyleSheet.create({
     },
 
     contactCard: {
-        backgroundColor: '#FFF9F0',
+        backgroundColor: '#74d3ff3b',
         borderRadius: BorderRadius.md,
         padding: 20,
         alignItems: 'center',
         marginTop: 10,
         marginBottom: 20,
         borderWidth: 1,
-        borderColor: '#ffb76ab1',
+        borderColor: '#74d4ff',
     },
 
     contactTitle: {
