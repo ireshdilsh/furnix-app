@@ -1,14 +1,21 @@
 import BottomSheet from '@/components/ui/BottomSheet';
+import Input from '@/components/ui/Input';
 import { BorderRadius, Colors } from '@/constants/theme';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import MaskedView from '@react-native-masked-view/masked-view';
+import Checkbox from 'expo-checkbox';
 import { LinearGradient } from 'expo-linear-gradient';
 import React, { useState } from 'react';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { Pressable, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 export default function Mainscreen() {
     const [isBottomSheetVisible, setIsBottomSheetVisible] = useState(false);
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const [agreeTerms, setAgreeTerms] = useState(false);
 
     const handleGetStarted = () => {
         setIsBottomSheetVisible(true);
@@ -16,6 +23,14 @@ export default function Mainscreen() {
 
     const handleCloseBottomSheet = () => {
         setIsBottomSheetVisible(false);
+    };
+
+    const handleCreateAccount = () => {
+        console.log({ name, email, password, confirmPassword, agreeTerms });
+    };
+
+    const handleSignIn = () => {
+        console.log('Navigate to sign in');
     };
 
     return (
@@ -53,12 +68,24 @@ export default function Mainscreen() {
             <BottomSheet
                 isVisible={isBottomSheetVisible}
                 onClose={handleCloseBottomSheet}
-                snapPoints={[0.5]}
+                snapPoints={[0.35]}
             >
-                <Text style={styles.bottomSheetTitle}>Let’s Get You Started</Text>
-                <Text style={styles.bottomSheetDescription}>
-                    Sign up to unlock exclusive deals, save your style, and manage your orders easily.
-                </Text>
+                <View style={{paddingHorizontal: 20}}>
+                    <Text style={styles.bottomSheetTitle}>Let’s Get You Started</Text>
+                    <Text style={styles.bottomSheetDescription}>
+                        Sign up to unlock exclusive deals, save your style, and manage your orders easily.
+                    </Text>
+
+                    <TouchableOpacity style={styles.googleBtn}>
+                        <Text style={styles.googleBtnText}>Continue with Google</Text>
+                        <AntDesign name="google" size={20} color="#fff" />
+                    </TouchableOpacity>
+
+                    <TouchableOpacity style={styles.mobileBtn}>
+                        <Text style={styles.mobileBtnText}>Continue with Mobile No</Text>
+                        <AntDesign name="google" size={20} color="#fff" />
+                    </TouchableOpacity>
+                </View>
             </BottomSheet>
         </GestureHandlerRootView>
     )
@@ -117,7 +144,7 @@ const styles = StyleSheet.create({
         fontSize: 22,
         fontFamily: 'Robotslab',
         color: Colors.textPrimary,
-        marginTop: 10,
+        marginTop: 25,
         marginBottom: 10,
     },
 
@@ -125,5 +152,25 @@ const styles = StyleSheet.create({
         color: Colors.textSecondary,
         lineHeight: 22,
     },
+
+    googleBtn: {
+        backgroundColor: Colors.primary,
+        paddingVertical: 13,
+        borderRadius: BorderRadius.sm,
+        marginTop: 40,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        gap: 10,
+    },
+
+    googleBtnText: {
+        color: '#fff',
+        fontSize: 16,
+        fontWeight: '500',
+        fontFamily: 'Robotslab',
+    },
+
+    
 
 })
