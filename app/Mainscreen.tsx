@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
 
     getStartedButton: {
         backgroundColor: Colors.primary,
-        paddingVertical: 15,
+        paddingVertical: 12,
         paddingHorizontal: 30,
         borderRadius: BorderRadius.sm,
         marginTop: 30,
