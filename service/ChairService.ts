@@ -1,7 +1,6 @@
 import { addDoc, collection, deleteDoc, doc, getDoc, getDocs, updateDoc } from "firebase/firestore";
 import { db } from "../config/config";
 import { Chair } from "../interfaces/Chair";
-// const auth = getAuth()
 
 const tasksCollection = collection(db, 'chairs')
 

@@ -26,6 +26,7 @@ const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 interface ProductCardProps {
     id: string;
     title: string;
+    description?: string;
     price: number;
     image: string;
     originalPrice?: number;
@@ -40,6 +41,7 @@ interface ProductCardProps {
 export default function ProductCard({
     id,
     title,
+    description,
     price,
     image,
     originalPrice,
@@ -126,6 +128,12 @@ export default function ProductCard({
                         {title}
                     </Text>
 
+                    {description && (
+                        <Text style={styles.description} numberOfLines={2}>
+                            {description}
+                        </Text>
+                    )}
+
                     <View style={styles.priceRow}>
                         <Text style={styles.price}>
                             ${price.toFixed(2)}
@@ -154,10 +162,11 @@ const styles = StyleSheet.create({
         width: Layout.productCardWidth,
     },
     card: {
-        backgroundColor: Colors.white,
-        borderRadius: BorderRadius.card,
+        backgroundColor: '#F8F9FF',
+        borderRadius: 8,
         overflow: 'hidden',
-        ...Shadows.card,
+        borderWidth: 1,
+        borderColor: Colors.gray200,
     },
     imageContainer: {
         width: '100%',
@@ -204,6 +213,13 @@ const styles = StyleSheet.create({
         color: Colors.textPrimary,
         marginBottom: Spacing.xs,
         lineHeight: Typography.fontSize.sm * 1.3,
+    },
+    description: {
+        fontFamily: Typography.fontFamily.regular,
+        fontSize: Typography.fontSize.xs,
+        color: Colors.textSecondary,
+        marginBottom: Spacing.xs,
+        lineHeight: Typography.fontSize.xs * 1.4,
     },
     priceRow: {
         flexDirection: 'row',
