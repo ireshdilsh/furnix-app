@@ -3,6 +3,7 @@ import { Colors } from '@/constants/theme'
 import React, { useState } from 'react'
 import { Image, Pressable, StyleSheet, Text, View } from 'react-native'
 import AntDesign from '@expo/vector-icons/AntDesign';
+import { useRouter } from 'expo-router';
 
 // Colored Google Icon Component
 // const GoogleIcon = ({ size = 24 }: { size?: number }) => (
@@ -37,14 +38,15 @@ export default function MainScreen() {
         setIsBottomSheetVisible(false)
     }
 
+    const router = useRouter();
+
     const handleGoogleSignIn = () => {
-        // Handle Google sign in logic here
-        console.log('Continue with Google pressed')
+        router.push('/screens/UserProduct')
     }
 
     return (
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', paddingHorizontal: 20 ,backgroundColor:'#F8F9FF'}}>
-            <Image source={require('../../assets/images/bg-img.png')} style={{ width: 265, height: 260, marginBottom: 30 }} />
+            <Image source={require('../../assets/images/bg-img.png')} style={{ width: 265, height: 260, marginBottom: 0 }} />
             <Text style={styles.title}>Design Your Dream Space</Text>
             <Text style={styles.description}>Shop aesthetic, high-quality furniture designed to make your home feel warm, modern, and uniquely yours.</Text>
             <Pressable
@@ -78,7 +80,7 @@ const styles = StyleSheet.create({
     title: {
         fontFamily: 'Robotslab',
         fontSize: 23,
-        marginTop: 50
+        marginTop: 100
     },
     description: {
         color: Colors.gray600,
