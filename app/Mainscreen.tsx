@@ -24,7 +24,7 @@ export default function Mainscreen() {
     };
 
     const handleSignIn = () => {
-        console.log('Navigate to sign in');
+        router.replace('/screens/UserDashbaord');
     };
 
     const gotoAgreementsScreen = () => {
