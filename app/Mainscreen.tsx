@@ -92,7 +92,7 @@ export default function Mainscreen() {
 
 const styles = StyleSheet.create({
 
-    termsText:{
+    termsText: {
         fontSize: 13,
         color: Colors.textSecondary,
         textAlign: 'center',
