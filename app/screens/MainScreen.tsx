@@ -1,9 +1,9 @@
-import BottomSheet from '@/components/ui/BottomSheet'
-import { Colors } from '@/constants/theme'
-import React, { useState } from 'react'
-import { Image, Pressable, StyleSheet, Text, View } from 'react-native'
+import BottomSheet from '@/components/ui/BottomSheet';
+import { Colors } from '@/constants/theme';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import { useRouter } from 'expo-router';
+import React, { useState } from 'react';
+import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
 
 // Colored Google Icon Component
 // const GoogleIcon = ({ size = 24 }: { size?: number }) => (
@@ -41,11 +41,11 @@ export default function MainScreen() {
     const router = useRouter();
 
     const handleGoogleSignIn = () => {
-        router.push('/screens/UserProduct')
+        router.push('/screens/AdminProducts')
     }
 
     return (
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', paddingHorizontal: 20 ,backgroundColor:'#F8F9FF'}}>
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', paddingHorizontal: 20, backgroundColor: '#F8F9FF' }}>
             <Image source={require('../../assets/images/bg-img.png')} style={{ width: 265, height: 260, marginBottom: 0 }} />
             <Text style={styles.title}>Design Your Dream Space</Text>
             <Text style={styles.description}>Shop aesthetic, high-quality furniture designed to make your home feel warm, modern, and uniquely yours.</Text>
@@ -55,11 +55,11 @@ export default function MainScreen() {
             >
                 <Text style={{ color: Colors.white, fontFamily: 'Robotslab', fontSize: 16, textAlign: 'center' }}>Get Started</Text>
             </Pressable>
-            <View style={{height:100,width:'100%',backgroundColor:Colors.primary, filter:'blur(200px)',position:'absolute',top:0}}/>
+            <View style={{ height: 100, width: '100%', backgroundColor: Colors.primary, filter: 'blur(200px)', position: 'absolute', top: 0 }} />
             <BottomSheet
                 isVisible={isBottomSheetVisible}
                 onClose={handleCloseBottomSheet}
-                snapPoints={[0.25]}
+                snapPoints={[0.35]}
             >
                 <View style={styles.bottomSheetContent}>
                     <Text style={styles.bottomSheetTitle}>Start Your Home Journey.</Text>
@@ -69,6 +69,11 @@ export default function MainScreen() {
                         {/* <GoogleIcon size={24} /> */}
                         <Text style={styles.googleButtonText}>Continue with Google</Text>
                         <AntDesign name="google" size={20} color="black" />
+                    </Pressable>
+
+                    <Pressable style={styles.emailButton} onPress={() => router.push('/screens/SignIn')}>
+                        <Text style={styles.emailButtonText}>Continue with Email</Text>
+                        <AntDesign name="mail" size={20} color="white" />
                     </Pressable>
                 </View>
             </BottomSheet>
@@ -121,5 +126,22 @@ const styles = StyleSheet.create({
         fontFamily: 'Robotslab',
         fontSize: 16,
         color: Colors.black,
+    },
+    emailButton: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: Colors.primary,
+        borderRadius: 8,
+        paddingVertical: 14,
+        paddingHorizontal: 24,
+        width: '100%',
+        gap: 12,
+        marginTop: 12,
+    },
+    emailButtonText: {
+        fontFamily: 'Robotslab',
+        fontSize: 16,
+        color: Colors.white,
     },
 })

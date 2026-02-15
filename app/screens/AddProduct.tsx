@@ -58,8 +58,12 @@ export default function AddProduct() {
                 image: image.trim(),
             })
             Alert.alert('Success', 'Product added successfully', [
-                { text: 'OK', onPress: () => router.back() }
+                {
+                    text: 'OK',
+                    onPress: () => router.back()
+                }
             ])
+
         } catch (error) {
             console.error(error)
             Alert.alert('Error', 'Failed to add product')
@@ -263,6 +267,6 @@ const styles = StyleSheet.create({
     submitButtonText: {
         color: '#fff',
         fontSize: 17,
-        fontWeight: '600',
+        fontFamily: 'Robotslab',
     },
 })

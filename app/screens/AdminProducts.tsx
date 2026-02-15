@@ -3,17 +3,20 @@ import { Colors } from '@/constants/theme'
 import { Chair } from '@/interfaces/Chair'
 import { getAllChairs } from '@/service/ChairService'
 import { Ionicons } from '@expo/vector-icons'
-import { router } from 'expo-router'
-import React, { useCallback, useEffect, useState } from 'react'
+import { router, useFocusEffect } from 'expo-router'
+import React, { useCallback, useState } from 'react'
 import { ActivityIndicator, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native'
 
 export default function AdminProducts() {
     const [chairs, setChairs] = useState<Chair[]>([])
     const [loading, setLoading] = useState(true)
 
-    useEffect(() => {
-        loadChairs()
-    }, [])
+    // Reload chairs every time the screen comes into focus
+    useFocusEffect(
+        useCallback(() => {
+            loadChairs()
+        }, [])
+    )
 
     const loadChairs = useCallback(async () => {
         try {
@@ -132,7 +135,7 @@ const styles = StyleSheet.create({
     addButtonText: {
         color: '#fff',
         fontSize: 16,
-        fontWeight: '600',
+        fontFamily: 'Robotslab',
     },
     statsContainer: {
         flexDirection: 'row',
