@@ -14,8 +14,19 @@ import { ActivityIndicator, Pressable, ScrollView, Text, TextInput, View } from 
 export default function UserProduct() {
     const [chairs, setChairs] = useState<Chair[]>([])
     const [loading, setLoading] = useState(true)
+    const [searchQuery, setSearchQuery] = useState('')
     const { addToCart, removeFromCart, isInCart, getItemCount } = useCart()
     const { addToFavourites, removeFromFavourites, isFavourite } = useFavourites()
+
+    // Filter products based on search query
+    const filteredChairs = chairs.filter(chair => {
+        if (!searchQuery.trim()) return true
+        const query = searchQuery.toLowerCase().trim()
+        return (
+            chair.title.toLowerCase().includes(query) ||
+            chair.description.toLowerCase().includes(query)
+        )
+    })
 
     useEffect(() => {
         loadChairs()
@@ -109,14 +120,39 @@ export default function UserProduct() {
                     </View>
                 </View>
 
-                <TextInput placeholder='search here ...' style={{
+                <View style={{
+                    flexDirection: 'row',
+                    alignItems: 'center',
                     backgroundColor: '#e5e7eb98',
-                    borderRadius: 5,
+                    borderRadius: 8,
                     paddingHorizontal: 15,
-                    width: '100%',
                     marginTop: 15,
                     height: 48
-                }} />
+                }}>
+                    <Ionicons name="search" size={20} color="#9CA3AF" />
+                    <TextInput
+                        placeholder='Search products...'
+                        placeholderTextColor="#9CA3AF"
+                        value={searchQuery}
+                        onChangeText={setSearchQuery}
+                        style={{
+                            flex: 1,
+                            marginLeft: 10,
+                            fontSize: 15,
+                            color: '#1F2937'
+                        }}
+                    />
+                    {searchQuery.length > 0 && (
+                        <Pressable onPress={() => setSearchQuery('')}>
+                            <Ionicons name="close-circle" size={20} color="#9CA3AF" />
+                        </Pressable>
+                    )}
+                </View>
+                {searchQuery.trim().length > 0 && searchQuery.trim().length < 2 && (
+                    <Text style={{ color: '#f59e0b', fontSize: 12, marginTop: 6 }}>
+                        Enter at least 2 characters to search
+                    </Text>
+                )}
 
                 {/* Discount Card */}
                 <LinearGradient
@@ -150,9 +186,19 @@ export default function UserProduct() {
 
                 {loading ? (
                     <ActivityIndicator size="large" color={Colors.gradientPurpleCoral[0]} style={{ marginTop: 30 }} />
+                ) : filteredChairs.length === 0 ? (
+                    <View style={{ alignItems: 'center', marginTop: 50 }}>
+                        <Ionicons name="search-outline" size={60} color="#D1D5DB" />
+                        <Text style={{ fontFamily: 'Robotslab', fontSize: 16, color: '#6B7280', marginTop: 15 }}>
+                            No products found
+                        </Text>
+                        <Text style={{ color: '#9CA3AF', fontSize: 13, marginTop: 5 }}>
+                            Try adjusting your search
+                        </Text>
+                    </View>
                 ) : (
                     <View style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between', marginTop: 15 }}>
-                        {chairs.map((chair, index) => (
+                        {filteredChairs.map((chair, index) => (
                             <ProductCard
                                 key={chair.id}
                                 id={chair.id}
