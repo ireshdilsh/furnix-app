@@ -1,9 +1,11 @@
 import { Colors } from '@/constants/theme'
 import { useCart } from '@/context/CartContext'
+import { getCurrentUser } from '@/service/AuthService'
+import { createOrder } from '@/service/OrderService'
 import { Ionicons } from '@expo/vector-icons'
 import { LinearGradient } from 'expo-linear-gradient'
 import { router } from 'expo-router'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
     Alert,
     KeyboardAvoidingView,
@@ -29,6 +31,17 @@ export default function Checkout() {
     const [city, setCity] = useState('')
     const [zipCode, setZipCode] = useState('')
 
+    useEffect(() => {
+        // Pre-fill email from logged in user
+        const user = getCurrentUser()
+        if (user?.email) {
+            setEmail(user.email)
+        }
+        if (user?.displayName) {
+            setFullName(user.displayName)
+        }
+    }, [])
+
     const subtotal = getTotal()
     const shipping = subtotal > 0 ? 9.99 : 0
     const tax = subtotal * 0.08
@@ -42,9 +55,22 @@ export default function Checkout() {
 
         setProcessing(true)
 
-        // Simulate order processing
-        setTimeout(() => {
-            setProcessing(false)
+        try {
+            // Save order to database
+            await createOrder({
+                email: email,
+                amount: total,
+                billingAddress: {
+                    fullName: fullName,
+                    phone: phone,
+                    address: address,
+                    city: city,
+                    zipCode: zipCode,
+                },
+                paymentMethod: selectedPayment,
+                itemCount: getItemCount(),
+            })
+
             clearCart()
             Alert.alert(
                 'Order Placed!',
@@ -56,7 +82,11 @@ export default function Checkout() {
                     }
                 ]
             )
-        }, 2000)
+        } catch (error: any) {
+            Alert.alert('Error', error.toString())
+        } finally {
+            setProcessing(false)
+        }
     }
 
     const paymentMethods = [

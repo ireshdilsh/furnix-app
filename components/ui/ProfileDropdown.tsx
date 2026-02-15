@@ -102,11 +102,37 @@ export default function ProfileDropdown({ style, isAdmin = false }: ProfileDropd
                                     style={styles.menuItem}
                                     onPress={() => {
                                         setIsVisible(false);
+                                        router.push('/screens/Favourites' as any);
+                                    }}
+                                >
+                                    <Ionicons name="heart-outline" size={20} color={Colors.primary} />
+                                    <Text style={styles.menuItemText}>My Favourites</Text>
+                                </Pressable>
+
+                                <View style={styles.divider} />
+
+                                <Pressable
+                                    style={styles.menuItem}
+                                    onPress={() => {
+                                        setIsVisible(false);
+                                        router.push('/screens/MyOrders' as any);
+                                    }}
+                                >
+                                    <Ionicons name="receipt-outline" size={20} color={Colors.primary} />
+                                    <Text style={styles.menuItemText}>My Orders</Text>
+                                </Pressable>
+
+                                <View style={styles.divider} />
+
+                                <Pressable
+                                    style={styles.menuItem}
+                                    onPress={() => {
+                                        setIsVisible(false);
                                         router.push('/screens/AddNewCard' as any);
                                     }}
                                 >
                                     <Ionicons name="card-outline" size={20} color={Colors.primary} />
-                                    <Text style={styles.menuItemText}>Add New Card</Text>
+                                    <Text style={styles.menuItemText}>My Cards</Text>
                                 </Pressable>
 
                                 <View style={styles.divider} />

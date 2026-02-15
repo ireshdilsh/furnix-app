@@ -2,6 +2,7 @@ import ProductCard from '@/components/ui/ProductCard'
 import ProfileDropdown from '@/components/ui/ProfileDropdown'
 import { Colors } from '@/constants/theme'
 import { useCart } from '@/context/CartContext'
+import { useFavourites } from '@/context/FavouritesContext'
 import { Chair } from '@/interfaces/Chair'
 import { getAllChairs } from '@/service/ChairService'
 import { Ionicons } from '@expo/vector-icons'
@@ -13,8 +14,8 @@ import { ActivityIndicator, Pressable, ScrollView, Text, TextInput, View } from 
 export default function UserProduct() {
     const [chairs, setChairs] = useState<Chair[]>([])
     const [loading, setLoading] = useState(true)
-    const [wishlist, setWishlist] = useState<string[]>([])
     const { addToCart, removeFromCart, isInCart, getItemCount } = useCart()
+    const { addToFavourites, removeFromFavourites, isFavourite } = useFavourites()
 
     useEffect(() => {
         loadChairs()
@@ -31,10 +32,16 @@ export default function UserProduct() {
         }
     }
 
-    const toggleWishlist = (id: string) => {
-        setWishlist(prev =>
-            prev.includes(id) ? prev.filter(item => item !== id) : [...prev, id]
-        )
+    const handleFavouriteToggle = async (chair: Chair) => {
+        try {
+            if (isFavourite(chair.id)) {
+                await removeFromFavourites(chair.id)
+            } else {
+                await addToFavourites(chair)
+            }
+        } catch (error) {
+            console.error('Error toggling favourite:', error)
+        }
     }
 
     const handleCartToggle = (chair: Chair) => {
@@ -73,31 +80,6 @@ export default function UserProduct() {
 
                     {/* Header Icons */}
                     <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
-                        {/* Favourites */}
-                        <Pressable
-                            onPress={() => router.push('/screens/Favourites')}
-                            style={{ position: 'relative' }}
-                        >
-                            <Ionicons name="heart-outline" size={24} color="#374151" />
-                            {wishlist.length > 0 && (
-                                <View style={{
-                                    position: 'absolute',
-                                    top: -5,
-                                    right: -5,
-                                    backgroundColor: Colors.gradientPurpleCoral[0],
-                                    borderRadius: 10,
-                                    width: 18,
-                                    height: 18,
-                                    justifyContent: 'center',
-                                    alignItems: 'center'
-                                }}>
-                                    <Text style={{ color: '#fff', fontSize: 10, fontWeight: '600' }}>
-                                        {wishlist.length}
-                                    </Text>
-                                </View>
-                            )}
-                        </Pressable>
-
                         {/* Cart */}
                         <Pressable
                             onPress={() => router.push('/screens/Cart')}
@@ -178,9 +160,9 @@ export default function UserProduct() {
                                 description={chair.description}
                                 price={chair.price}
                                 image={chair.image}
-                                isWishlisted={wishlist.includes(chair.id)}
+                                isWishlisted={isFavourite(chair.id)}
                                 isInCart={isInCart(chair.id)}
-                                onWishlistPress={() => toggleWishlist(chair.id)}
+                                onWishlistPress={() => handleFavouriteToggle(chair)}
                                 onAddToCart={() => handleCartToggle(chair)}
                                 onPress={() => gotoProductWithID(chair.id)}
                                 index={index}

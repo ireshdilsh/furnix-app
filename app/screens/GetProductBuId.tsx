@@ -13,21 +13,21 @@ export default function GetProductBuId() {
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
+        const getProductById = async () => {
+            try {
+                const resp = await getChairByID(id!)
+                setProduct(resp)
+            } catch (error) {
+                console.error(error)
+            } finally {
+                setLoading(false)
+            }
+        }
+
         if (id) {
             getProductById()
         }
     }, [id])
-
-    const getProductById = async () => {
-        try {
-            const resp = await getChairByID(id!)
-            setProduct(resp)
-        } catch (error) {
-            console.error(error)
-        } finally {
-            setLoading(false)
-        }
-    }
 
     if (loading) {
         return (
@@ -67,9 +67,21 @@ export default function GetProductBuId() {
                 </View>
             </ScrollView>
 
-            {/* Add to Cart Button */}
+            {/* Buy Now Button */}
             <View style={styles.bottomContainer}>
-                <Pressable style={styles.addToCartButton}>
+                <Pressable
+                    style={styles.addToCartButton}
+                    onPress={() => router.push({
+                        pathname: '/screens/OrderPlace' as any,
+                        params: {
+                            id: product.id,
+                            title: product.title,
+                            price: product.price.toString(),
+                            image: product.image,
+                            description: product.description,
+                        }
+                    })}
+                >
                     <Text style={styles.addToCartText}>Buy Now {'\t'} ${product.price.toFixed(2)}</Text>
                 </Pressable>
             </View>
