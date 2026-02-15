@@ -3,6 +3,7 @@ import { Colors } from '@/constants/theme'
 import { Chair } from '@/interfaces/Chair'
 import { getAllChairs } from '@/service/ChairService'
 import { LinearGradient } from 'expo-linear-gradient'
+import { router } from 'expo-router'
 import React, { useEffect, useState } from 'react'
 import { ActivityIndicator, ScrollView, Text, TextInput, View } from 'react-native'
 
@@ -30,6 +31,13 @@ export default function UserProduct() {
         setWishlist(prev =>
             prev.includes(id) ? prev.filter(item => item !== id) : [...prev, id]
         )
+    }
+
+    const gotoProductWithID = (id:string) => {
+        router.push({
+            pathname: '/screens/GetProductBuId',
+            params: { id }
+        })
     }
 
     return (
@@ -101,7 +109,7 @@ export default function UserProduct() {
                                 image={chair.image}
                                 isWishlisted={wishlist.includes(chair.id)}
                                 onWishlistPress={() => toggleWishlist(chair.id)}
-                                onPress={() => console.log('Chair pressed:', chair.id)}
+                                onPress={() => gotoProductWithID(chair.id)}
                                 index={index}
                                 style={{ width: '48%', marginBottom: 15 }}
                             />
