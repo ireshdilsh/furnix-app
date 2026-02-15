@@ -32,8 +32,10 @@ interface ProductCardProps {
     originalPrice?: number;
     rating?: number;
     isWishlisted?: boolean;
+    isInCart?: boolean;
     onPress?: () => void;
     onWishlistPress?: () => void;
+    onAddToCart?: () => void;
     style?: StyleProp<ViewStyle>;
     index?: number;
 }
@@ -47,8 +49,10 @@ export default function ProductCard({
     originalPrice,
     rating,
     isWishlisted = false,
+    isInCart = false,
     onPress,
     onWishlistPress,
+    onAddToCart,
     style,
     index = 0,
 }: ProductCardProps) {
@@ -151,6 +155,26 @@ export default function ProductCard({
                             <Text style={styles.ratingText}>{rating.toFixed(1)}</Text>
                         </View>
                     )}
+
+                    {/* Add to Cart Button */}
+                    {onAddToCart && (
+                        <Pressable
+                            onPress={(e) => {
+                                e.stopPropagation();
+                                onAddToCart();
+                            }}
+                            style={[styles.addToCartButton, isInCart && styles.addToCartButtonActive]}
+                        >
+                            <Ionicons
+                                name={isInCart ? 'checkmark' : 'add'}
+                                size={16}
+                                color="#fff"
+                            />
+                            <Text style={styles.addToCartText}>
+                                {isInCart ? 'Added' : 'Add to Cart'}
+                            </Text>
+                        </Pressable>
+                    )}
                 </View>
             </AnimatedPressable>
         </Animated.View>
@@ -248,5 +272,23 @@ const styles = StyleSheet.create({
         fontFamily: Typography.fontFamily.medium,
         fontSize: Typography.fontSize.xs,
         color: Colors.textSecondary,
+    },
+    addToCartButton: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: Colors.primary,
+        paddingVertical: Spacing.sm,
+        borderRadius: BorderRadius.sm,
+        marginTop: Spacing.sm,
+        gap: 6,
+    },
+    addToCartButtonActive: {
+        backgroundColor: Colors.success || '#22c55e',
+    },
+    addToCartText: {
+        fontFamily: Typography.fontFamily.semiBold,
+        fontSize: Typography.fontSize.sm,
+        color: Colors.white,
     },
 });

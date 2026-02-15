@@ -1,17 +1,20 @@
 import ProductCard from '@/components/ui/ProductCard'
 import ProfileDropdown from '@/components/ui/ProfileDropdown'
 import { Colors } from '@/constants/theme'
+import { useCart } from '@/context/CartContext'
 import { Chair } from '@/interfaces/Chair'
 import { getAllChairs } from '@/service/ChairService'
+import { Ionicons } from '@expo/vector-icons'
 import { LinearGradient } from 'expo-linear-gradient'
 import { router } from 'expo-router'
 import React, { useEffect, useState } from 'react'
-import { ActivityIndicator, ScrollView, Text, TextInput, View } from 'react-native'
+import { ActivityIndicator, Pressable, ScrollView, Text, TextInput, View } from 'react-native'
 
 export default function UserProduct() {
     const [chairs, setChairs] = useState<Chair[]>([])
     const [loading, setLoading] = useState(true)
     const [wishlist, setWishlist] = useState<string[]>([])
+    const { addToCart, removeFromCart, isInCart, getItemCount } = useCart()
 
     useEffect(() => {
         loadChairs()
@@ -32,6 +35,14 @@ export default function UserProduct() {
         setWishlist(prev =>
             prev.includes(id) ? prev.filter(item => item !== id) : [...prev, id]
         )
+    }
+
+    const handleCartToggle = (chair: Chair) => {
+        if (isInCart(chair.id)) {
+            removeFromCart(chair.id)
+        } else {
+            addToCart(chair)
+        }
     }
 
     const gotoProductWithID = (id: string) => {
@@ -59,7 +70,61 @@ export default function UserProduct() {
                             fontSize: 15
                         }}>Browse the latest arrivals and transform your space with timeless modern designs.</Text>
                     </View>
-                    <ProfileDropdown />
+
+                    {/* Header Icons */}
+                    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+                        {/* Favourites */}
+                        <Pressable
+                            onPress={() => router.push('/screens/Favourites')}
+                            style={{ position: 'relative' }}
+                        >
+                            <Ionicons name="heart-outline" size={24} color="#374151" />
+                            {wishlist.length > 0 && (
+                                <View style={{
+                                    position: 'absolute',
+                                    top: -5,
+                                    right: -5,
+                                    backgroundColor: Colors.gradientPurpleCoral[0],
+                                    borderRadius: 10,
+                                    width: 18,
+                                    height: 18,
+                                    justifyContent: 'center',
+                                    alignItems: 'center'
+                                }}>
+                                    <Text style={{ color: '#fff', fontSize: 10, fontWeight: '600' }}>
+                                        {wishlist.length}
+                                    </Text>
+                                </View>
+                            )}
+                        </Pressable>
+
+                        {/* Cart */}
+                        <Pressable
+                            onPress={() => router.push('/screens/Cart')}
+                            style={{ position: 'relative' }}
+                        >
+                            <Ionicons name="cart-outline" size={24} color="#374151" />
+                            {getItemCount() > 0 && (
+                                <View style={{
+                                    position: 'absolute',
+                                    top: -5,
+                                    right: -5,
+                                    backgroundColor: Colors.gradientPurpleCoral[0],
+                                    borderRadius: 10,
+                                    width: 18,
+                                    height: 18,
+                                    justifyContent: 'center',
+                                    alignItems: 'center'
+                                }}>
+                                    <Text style={{ color: '#fff', fontSize: 10, fontWeight: '600' }}>
+                                        {getItemCount()}
+                                    </Text>
+                                </View>
+                            )}
+                        </Pressable>
+
+                        <ProfileDropdown />
+                    </View>
                 </View>
 
                 <TextInput placeholder='search here ...' style={{
@@ -114,7 +179,9 @@ export default function UserProduct() {
                                 price={chair.price}
                                 image={chair.image}
                                 isWishlisted={wishlist.includes(chair.id)}
+                                isInCart={isInCart(chair.id)}
                                 onWishlistPress={() => toggleWishlist(chair.id)}
+                                onAddToCart={() => handleCartToggle(chair)}
                                 onPress={() => gotoProductWithID(chair.id)}
                                 index={index}
                                 style={{ width: '48%', marginBottom: 15 }}

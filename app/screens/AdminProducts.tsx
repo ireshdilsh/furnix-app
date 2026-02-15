@@ -51,7 +51,7 @@ export default function AdminProducts() {
                         <Text style={styles.title}>Admin Panel</Text>
                         <Text style={styles.subtitle}>Manage your products inventory</Text>
                     </View>
-                    <ProfileDropdown />
+                    <ProfileDropdown isAdmin />
                 </View>
 
                 {/* Add Product Button */}

@@ -1,5 +1,6 @@
 import { Colors } from '@/constants/theme';
 import { getCurrentUser, logoutUser } from '@/service/AuthService';
+import { Ionicons } from '@expo/vector-icons';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import { useRouter } from 'expo-router';
 import React, { useEffect, useState } from 'react';
@@ -14,9 +15,10 @@ import {
 
 interface ProfileDropdownProps {
     style?: object;
+    isAdmin?: boolean;
 }
 
-export default function ProfileDropdown({ style }: ProfileDropdownProps) {
+export default function ProfileDropdown({ style, isAdmin = false }: ProfileDropdownProps) {
     const router = useRouter();
     const [isVisible, setIsVisible] = useState(false);
     const [userName, setUserName] = useState('');
@@ -93,6 +95,23 @@ export default function ProfileDropdown({ style }: ProfileDropdownProps) {
                         </View>
 
                         <View style={styles.divider} />
+
+                        {!isAdmin && (
+                            <>
+                                <Pressable
+                                    style={styles.menuItem}
+                                    onPress={() => {
+                                        setIsVisible(false);
+                                        router.push('/screens/AddNewCard' as any);
+                                    }}
+                                >
+                                    <Ionicons name="card-outline" size={20} color={Colors.primary} />
+                                    <Text style={styles.menuItemText}>Add New Card</Text>
+                                </Pressable>
+
+                                <View style={styles.divider} />
+                            </>
+                        )}
 
                         <Pressable style={styles.menuItem} onPress={handleLogout}>
                             <AntDesign name="logout" size={20} color={Colors.error} />
@@ -184,6 +203,11 @@ const styles = StyleSheet.create({
         paddingVertical: 16,
         paddingHorizontal: 20,
         gap: 12,
+    },
+    menuItemText: {
+        fontFamily: 'Robotslab',
+        fontSize: 16,
+        color: Colors.textPrimary,
     },
     logoutText: {
         fontFamily: 'Robotslab',
