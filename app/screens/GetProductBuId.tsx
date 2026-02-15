@@ -63,8 +63,6 @@ export default function GetProductBuId() {
                 {/* Product Details */}
                 <View style={styles.detailsContainer}>
                     <Text style={styles.title}>{product.title}</Text>
-                    <Text style={styles.price}>${product.price.toFixed(2)}</Text>
-                    <Text style={styles.descriptionLabel}>Description</Text>
                     <Text style={styles.description}>{product.description}</Text>
                 </View>
             </ScrollView>
@@ -72,7 +70,7 @@ export default function GetProductBuId() {
             {/* Add to Cart Button */}
             <View style={styles.bottomContainer}>
                 <Pressable style={styles.addToCartButton}>
-                    <Text style={styles.addToCartText}>Add to Cart</Text>
+                    <Text style={styles.addToCartText}>Buy Now {'\t'} ${product.price.toFixed(2)}</Text>
                 </Pressable>
             </View>
         </View>
@@ -97,7 +95,7 @@ const styles = StyleSheet.create({
     backButton: {
         position: 'absolute',
         top: 50,
-        left: 20,
+        left: 25,
         zIndex: 10,
         backgroundColor: 'rgba(255, 255, 255, 0.9)',
         borderRadius: 20,
@@ -105,10 +103,10 @@ const styles = StyleSheet.create({
     },
     productImage: {
         width: '92%',
-        marginLeft:17,
-        marginTop:40,
+        marginLeft: 17,
+        marginTop: 40,
         height: 340,
-        borderRadius:10
+        borderRadius: 10
     },
     detailsContainer: {
         padding: 24,
@@ -142,14 +140,14 @@ const styles = StyleSheet.create({
     },
     addToCartButton: {
         backgroundColor: Colors.gradientPurpleCoral[0],
-        paddingVertical: 16,
+        paddingVertical: 14,
         borderRadius: 12,
         alignItems: 'center',
     },
     addToCartText: {
         color: '#fff',
-        fontSize: 16,
+        fontSize: 17,
         // fontWeight: '600',
-        fontFamily:'Robotslab'
+        fontFamily: 'Robotslab'
     },
 })
