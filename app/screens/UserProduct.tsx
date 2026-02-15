@@ -1,4 +1,5 @@
 import ProductCard from '@/components/ui/ProductCard'
+import ProfileDropdown from '@/components/ui/ProfileDropdown'
 import { Colors } from '@/constants/theme'
 import { Chair } from '@/interfaces/Chair'
 import { getAllChairs } from '@/service/ChairService'
@@ -33,7 +34,7 @@ export default function UserProduct() {
         )
     }
 
-    const gotoProductWithID = (id:string) => {
+    const gotoProductWithID = (id: string) => {
         router.push({
             pathname: '/screens/GetProductBuId',
             params: { id }
@@ -44,17 +45,22 @@ export default function UserProduct() {
         <View style={{ backgroundColor: '#F8F9FF', flex: 1 }}>
             <ScrollView style={{ flex: 1, paddingHorizontal: 28 }} showsVerticalScrollIndicator={false}>
 
-                <Text style={{
-                    fontFamily: 'Robotslab',
-                    fontSize: 21,
-                    marginTop: 80
-                }}>Discover What&apos;s New</Text>
+                {/* Header with Profile */}
+                <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: 60 }}>
+                    <View style={{ flex: 1 }}>
+                        <Text style={{
+                            fontFamily: 'Robotslab',
+                            fontSize: 21,
+                        }}>Discover What&apos;s New</Text>
 
-                <Text style={{
-                    color: '#6B7280',
-                    marginTop: 10,
-                    fontSize: 15
-                }}>Browse the latest arrivals and transform your space with timeless modern designs.</Text>
+                        <Text style={{
+                            color: '#6B7280',
+                            marginTop: 10,
+                            fontSize: 15
+                        }}>Browse the latest arrivals and transform your space with timeless modern designs.</Text>
+                    </View>
+                    <ProfileDropdown />
+                </View>
 
                 <TextInput placeholder='search here ...' style={{
                     backgroundColor: '#e5e7eb98',

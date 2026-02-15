@@ -1,4 +1,5 @@
 import ProductCard from '@/components/ui/ProductCard'
+import ProfileDropdown from '@/components/ui/ProfileDropdown'
 import { Colors } from '@/constants/theme'
 import { Chair } from '@/interfaces/Chair'
 import { getAllChairs } from '@/service/ChairService'
@@ -11,13 +12,6 @@ export default function AdminProducts() {
     const [chairs, setChairs] = useState<Chair[]>([])
     const [loading, setLoading] = useState(true)
 
-    // Reload chairs every time the screen comes into focus
-    useFocusEffect(
-        useCallback(() => {
-            loadChairs()
-        }, [])
-    )
-
     const loadChairs = useCallback(async () => {
         try {
             setLoading(true)
@@ -29,6 +23,13 @@ export default function AdminProducts() {
             setLoading(false)
         }
     }, [])
+
+    // Reload chairs every time the screen comes into focus
+    useFocusEffect(
+        useCallback(() => {
+            loadChairs()
+        }, [loadChairs])
+    )
 
     const gotoProductWithID = (id: string) => {
         router.push({
@@ -46,8 +47,11 @@ export default function AdminProducts() {
             <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
                 {/* Header */}
                 <View style={styles.header}>
-                    <Text style={styles.title}>Admin Panel</Text>
-                    <Text style={styles.subtitle}>Manage your products inventory</Text>
+                    <View>
+                        <Text style={styles.title}>Admin Panel</Text>
+                        <Text style={styles.subtitle}>Manage your products inventory</Text>
+                    </View>
+                    <ProfileDropdown />
                 </View>
 
                 {/* Add Product Button */}
@@ -111,6 +115,9 @@ const styles = StyleSheet.create({
     },
     header: {
         marginTop: 60,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
     },
     title: {
         fontFamily: 'Robotslab',

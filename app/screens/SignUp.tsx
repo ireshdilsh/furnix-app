@@ -52,7 +52,7 @@ export default function SignUp() {
         try {
             await registerUser(email, password, name);
             Alert.alert('Success', 'Account created successfully!', [
-                { text: 'OK', onPress: () => router.push('/screens/AdminProducts') }
+                { text: 'OK', onPress: () => router.push('/screens/UserProduct') }
             ]);
         } catch (error: any) {
             Alert.alert('Sign Up Failed', error);
@@ -132,7 +132,7 @@ export default function SignUp() {
                                 />
                                 <Pressable onPress={() => setShowPassword(!showPassword)}>
                                     <AntDesign
-                                        name={showPassword ? 'eye' : 'eyeinvisible'}
+                                        name={showPassword ? 'eye' : 'eye-invisible'}
                                         size={20}
                                         color={Colors.gray500}
                                     />
@@ -154,7 +154,7 @@ export default function SignUp() {
                                 />
                                 <Pressable onPress={() => setShowConfirmPassword(!showConfirmPassword)}>
                                     <AntDesign
-                                        name={showConfirmPassword ? 'eye' : 'eyeinvisible'}
+                                        name={showConfirmPassword ? 'eye' : 'eye-invisible'}
                                         size={20}
                                         color={Colors.gray500}
                                     />

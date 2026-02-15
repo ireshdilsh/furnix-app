@@ -1,6 +1,6 @@
 import { Colors } from '@/constants/theme';
 // import AntDesign from '@expo/vector-icons/AntDesign';
-import { loginUser, resetPassword } from '@/service/AuthService';
+import { loginUser } from '@/service/AuthService';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import { useRouter } from 'expo-router';
 import React, { useState } from 'react';
@@ -38,7 +38,12 @@ export default function SignIn() {
         setLoading(true);
         try {
             await loginUser(email, password);
-            router.push('/screens/AdminProducts');
+            // Check if admin credentials
+            if (email.toLowerCase() === 'admin@gmail.com') {
+                router.push('/screens/AdminProducts');
+            } else {
+                router.push('/screens/UserProduct');
+            }
         } catch (error: any) {
             Alert.alert('Sign In Failed', error);
         } finally {
@@ -50,21 +55,8 @@ export default function SignIn() {
         router.push('/screens/SignUp');
     };
 
-    const handleForgotPassword = async () => {
-        if (!email.trim()) {
-            Alert.alert('Error', 'Please enter your email address first');
-            return;
-        }
-
-        setLoading(true);
-        try {
-            await resetPassword(email);
-            Alert.alert('Success', 'Password reset email sent. Check your inbox.');
-        } catch (error: any) {
-            Alert.alert('Error', error);
-        } finally {
-            setLoading(false);
-        }
+    const handleForgotPassword = () => {
+        router.push('/screens/ForgotPassword');
     };
 
     return (
@@ -119,7 +111,7 @@ export default function SignIn() {
                                 />
                                 <Pressable onPress={() => setShowPassword(!showPassword)}>
                                     <AntDesign
-                                        name={showPassword ? 'eye' : 'eyeinvisible'}
+                                        name={showPassword ? 'eye' : 'eye-invisible'}
                                         size={20}
                                         color={Colors.gray500}
                                     />

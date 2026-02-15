@@ -3,7 +3,7 @@ import { getChairByID, updateChair } from '@/service/ChairService'
 import { Ionicons } from '@expo/vector-icons'
 import * as ImagePicker from 'expo-image-picker'
 import { router, useLocalSearchParams } from 'expo-router'
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { ActivityIndicator, Alert, Image, KeyboardAvoidingView, Platform, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native'
 
 export default function UpdateProduct() {
@@ -15,13 +15,7 @@ export default function UpdateProduct() {
     const [loading, setLoading] = useState(true)
     const [updating, setUpdating] = useState(false)
 
-    useEffect(() => {
-        if (id) {
-            loadProduct()
-        }
-    }, [id])
-
-    const loadProduct = async () => {
+    const loadProduct = useCallback(async () => {
         try {
             const product = await getChairByID(id!)
             if (product) {
@@ -36,7 +30,13 @@ export default function UpdateProduct() {
         } finally {
             setLoading(false)
         }
-    }
+    }, [id])
+
+    useEffect(() => {
+        if (id) {
+            loadProduct()
+        }
+    }, [id, loadProduct])
 
     const pickImage = async () => {
         const result = await ImagePicker.launchImageLibraryAsync({

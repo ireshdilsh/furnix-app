@@ -3,10 +3,11 @@ import {
     sendPasswordResetEmail,
     signInWithEmailAndPassword,
     signOut,
+    updatePassword,
     updateProfile,
     User
 } from "firebase/auth";
-import { doc, getDoc, setDoc } from "firebase/firestore";
+import { collection, doc, getDoc, getDocs, query, setDoc, where } from "firebase/firestore";
 import { auth, db } from "../config/config";
 
 export interface UserData {
@@ -92,6 +93,44 @@ export const getUserData = async (uid: string): Promise<UserData | null> => {
     } catch (error) {
         console.error("Error getting user data:", error);
         throw error;
+    }
+};
+
+// Check if email exists in users collection
+export const checkEmailExists = async (email: string): Promise<boolean> => {
+    try {
+        const usersRef = collection(db, "users");
+        const q = query(usersRef, where("email", "==", email.toLowerCase()));
+        const querySnapshot = await getDocs(q);
+        return !querySnapshot.empty;
+    } catch (error) {
+        console.error("Error checking email:", error);
+        throw "Error verifying email. Please try again.";
+    }
+};
+
+// Update user password (requires current password to reauthenticate)
+export const updateUserPassword = async (
+    email: string,
+    currentPassword: string,
+    newPassword: string
+): Promise<void> => {
+    try {
+        // Sign in with current credentials to authenticate
+        const userCredential = await signInWithEmailAndPassword(auth, email, currentPassword);
+        const user = userCredential.user;
+
+        // Update to new password
+        await updatePassword(user, newPassword);
+
+        // Sign out after password change
+        await signOut(auth);
+
+    } catch (error: any) {
+        if (typeof error === 'string') {
+            throw error;
+        }
+        throw getAuthErrorMessage(error.code);
     }
 };
 
